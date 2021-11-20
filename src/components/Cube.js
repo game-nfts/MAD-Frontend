@@ -1,15 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import SlantButton from "./SlantButton";
-import VerticalTabs from "./VerticalTabs";
-
 function Cube(props) {
 
   const { image } = props;
 
   return (
     <>
-      <img className="w-full flex-grow" src={image} />
+      <div className="mt-8 md:mt-0 flex flex-col flex-grow my-auto">
+        <div className="my-auto" onDragStart={(e) => {e.preventDefault();}}>
+          <img src={image}/>
+        </div>
+      </div>
     </>
   );
 }
