@@ -73,7 +73,7 @@ function Navbar(props) {
                     <div className={`${showMobileNavbar ? 'block lg:block' : 'hidden lg:block'} lg:my-auto bg-gray-500 w-full`}>
                       <nav id="dropdown" role="navigation" className="flex flex-col lg:flex-row w-full lg:w-auto pb-2 lg:pb-0 px-4 sm:px-6 lg:px-0">
                         <NavbarLinks activePage={activePage} activeClass={'active'}/>
-                        <div className="text-gray-text-light my-auto lg:pl-6 lg:ml-auto cursor-pointer"><UserMenu /></div>
+                        {/* <div className="text-gray-text-light my-auto lg:pl-6 lg:ml-auto cursor-pointer"><UserMenu /></div> */}
                       </nav>
                     </div>
                   </div>
