@@ -1,18 +1,19 @@
-function ComingSoon(props) {
+import ComingSoonBg from '../assets/coming-soon.png';
 
-  const { title } = props;
+function ComingSoon(props) {
 
   return (
     <>
-    <div className="flex-grow flex flex-col relative text-gray-80 pt-20">
-      <div className="w-full flex-grow max-w-7xl mx-auto flex relative text-white">
-        <div className="flex flex-col w-full mx-4 sm:mx-6 lg:mx-8">
-          <div className="flex flex-col w-full mt-8"></div>
-          <div className="text-4xl md:text-5xl font-extralight">
-            {title}
-          </div>
-          <div className="m-auto text-white">
-            Coming soon...
+    <div className="flex-grow flex flex-col relative text-gray-80">
+      <div className="flex-grow w-full max-w-7xl mx-auto flex relative text-white">
+        <div className="flex flex-col w-full">
+          <div className="flex w-full h-full">
+            <img className="fixed overflow-auto bottom-0 left-0 contain" src={ComingSoonBg} />
+            <div className="my-auto">
+              <div className="fixed w-full text-center font-tabs text-white text-4xl md:text-5xl lg:text-6xl ">
+                <span className="text-pink-50">Coming soon...</span> Stay tuned.
+              </div>
+            </div>
           </div>
         </div>
       </div>
