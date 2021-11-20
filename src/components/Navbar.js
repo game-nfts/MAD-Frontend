@@ -55,8 +55,8 @@ function Navbar(props) {
 			<div className={`z-30 w-full absolute`}>
 				<nav className={`select-none bg-gray-500 w-full`}>
           <div id="nav" className={`w-full flex flex-col lg:flex-row bg-gray-500 shadow-navbar`}>
-            <div className="max-w-7xl w-full px-2 sm:px-6 lg:px-8 h-20 py-2 flex flex-col lg:flex-row mx-auto">
-              <div id="toppartofnav" className={`bg-transparent`}>
+            <div className="max-w-7xl w-full h-20 py-2 flex flex-col lg:flex-row mx-auto">
+              <div id="toppartofnav" className={`bg-transparent px-4 sm:px-6 lg:px-8`}>
                 <div className="h-16 flex flex-row">
                   <div className={`block lg:hidden my-auto bg-transparent mr-2`} onClick={() => {if(showMobileNavbar) {handleShowNavbar(false); handleShouldHaveListener(false);} else {showMenu(!showMobileNavbar);}}}>
                     <img src={showMobileNavbar ? clear : ThickMenu} className={`select-none h-6 w-6 sm:h-8 sm:w-8`} />
@@ -71,7 +71,7 @@ function Navbar(props) {
                 <div className="w-full ml-0 flex flex-col lg:flex-row mr-4 lg:ml-4" >
                   <div className="w-full block lg:flex">
                     <div className={`${showMobileNavbar ? 'block lg:block' : 'hidden lg:block'} lg:my-auto bg-gray-500 w-full`}>
-                      <nav id="dropdown" role="navigation" className="flex flex-col lg:flex-row w-full lg:w-auto pb-2 lg:pb-0">
+                      <nav id="dropdown" role="navigation" className="flex flex-col lg:flex-row w-full lg:w-auto pb-2 lg:pb-0 px-4 sm:px-6 lg:px-0">
                         <NavbarLinks activePage={activePage} activeClass={'active'}/>
                         <div className="text-gray-text-light my-auto lg:pl-6 lg:ml-auto cursor-pointer"><UserMenu /></div>
                       </nav>
