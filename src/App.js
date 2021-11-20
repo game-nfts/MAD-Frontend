@@ -9,6 +9,8 @@ function App() {
   const [loggedIn, handleLoggedIn] = useState(false);
   const [activePage, handleActivePage] = useState("/home");
 
+  document.body.classList.add('bg-gray-500');
+
   return (
     <>
 			<Router>
