@@ -5,16 +5,17 @@ import Cube from "./Cube";
 import SlantButton from "./SlantButton";
 import VerticalTabs from "./VerticalTabs";
 import MoledaoImage from '../assets/moledao.png';
+import CoboImage from '../assets/cobo.png';
 import LeaseHover from "./LeaseHover";
 import AuctionHover from "./AuctionHover";
 
 function Home() {
   let navigate = useNavigate(); // to push an endpoint, call `navigate("/path");`
 
-  const [itemList, handleItemList] = useState(["Cobo Wallet Ads 2021", "Moledao Hackathon 2021", "and More..."]);
+  const [itemList, handleItemList] = useState([{name: "Cobo Wallet Ads 2021", link: "https://play.decentraland.org/?island=Idv30&position=23%2C18&realm=unicorn"}, {name: "Moledao Hackathon 2021", link: "https://www.cryptovoxels.com/play?coords=N@841E,45S"}, {name: "and More...", link: ""}]);
   const [activeItem, handleActiveItem] = useState(0);
   const [itemObj, handleItemObj] = useState({
-    "Cobo Wallet Ads 2021": MoledaoImage,
+    "Cobo Wallet Ads 2021": CoboImage,
     "Moledao Hackathon 2021": MoledaoImage,
     "and More...": MoledaoImage,
   });
@@ -39,10 +40,10 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 w-full grid-container h-auto">
-              <div className={`grid-inner w-full bg-gray-500 h-full flex ${hover === '' ? 'z-50' : 'z-10'}`}>
-                <div className={`my-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === '' ? 'opacity-100' : 'opacity-0'}`}>
-                  <Cube image={itemObj[itemList[activeItem]]} />
+            <div className="mt-8 w-full">
+              <div className={`w-full bg-gray-500 absolute ${hover === '' ? 'z-50' : 'z-10'}`}>
+                <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === '' ? 'opacity-100' : 'opacity-0'}`}>
+                  <Cube image={itemObj[itemList[activeItem].name]} />
                   <div className="flex-shrink-0">
                     <VerticalTabs
                       itemList={itemList}
