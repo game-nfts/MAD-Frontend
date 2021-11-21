@@ -31,10 +31,10 @@ function Home() {
               </div>
               <div className="flex flex-col xs:flex-row">
                 <div className="mr-0 xs:mr-4 w-full xs:w-auto">
-                  <SlantButton onMouseEnter={() => handleHover('auction')} onMouseLeave={() => handleHover('')} onClick={() => {}} text="Auction" className="bg-gray-500 hover:bg-green-50h hover:border-gray-70 w-full sm:w-auto" />
+                  <SlantButton onMouseEnter={() => handleHover('auction')} onMouseLeave={() => handleHover('')} onClick={() => {}} text="Auction" className="bg-gray-500 hover:bg-green-50h w-full sm:w-auto" />
                 </div>
                 <div className="ml-0 xs:ml-4 w-full xs:w-auto mt-4 xs:mt-0">
-                  <SlantButton onMouseEnter={() => handleHover('lease')} onMouseLeave={() => handleHover('')} onClick={() => {}} text="Lease My Estate" className="bg-gray-500 hover:bg-pink-80h hover:border-gray-70 w-full sm:w-auto" />
+                  <SlantButton onMouseEnter={() => handleHover('lease')} onMouseLeave={() => handleHover('')} onClick={() => {}} text="Lease My Estate" className="bg-gray-500 hover:bg-pink-80h w-full sm:w-auto" />
                 </div>
               </div>
             </div>
