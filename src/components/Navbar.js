@@ -11,6 +11,7 @@ function Navbar(props) {
   let navigate = useNavigate(); // to push an endpoint, call `navigate("/path");`
 
   const [showMobileNavbar, handleShowNavbar] = useState(false);
+	const [showDocs, handleShowDocs] = useState(false);
   const [shouldHaveListener, handleShouldHaveListener] = useState(false);
 
   useEffect(() => {
@@ -38,13 +39,33 @@ function Navbar(props) {
 
 	}
 
+	const showDocsHandler = show => {
+		if(!show) {
+			hideMenu();
+			return;
+		}
+
+		handleShowDocs(true);
+		handleShouldHaveListener(true);
+	}
+
   const hideMenu = (event) => {
+		if(showDocs && !showMobileNavbar) {
+			handleShowDocs(false);
+			handleShouldHaveListener(false);
+			return;
+		}
+
 		const element = document.getElementById('nav');
     const element2 = document.getElementById('dropdown');
 		if((!element && !element2) || (event && !element.contains(event.target) && !element2.contains(event.target))) {
 			handleShowNavbar(false);
 			handleShouldHaveListener(false);
 		}
+	}
+
+	const toggleDocsNavbar = () => {
+		handleShowDocs(!showDocs);
 	}
 
   const nonavbar = [];
@@ -72,7 +93,7 @@ function Navbar(props) {
                   <div className="w-full block lg:flex">
                     <div className={`${showMobileNavbar ? 'block lg:block' : 'hidden lg:block'} lg:my-auto bg-gray-500 w-full`}>
                       <nav id="dropdown" role="navigation" className="flex flex-col lg:flex-row w-full lg:w-auto pb-2 lg:pb-0 px-4 sm:px-6 lg:px-0">
-                        <NavbarLinks activePage={activePage} activeClass={'active'}/>
+                        <NavbarLinks activePage={activePage} activeClass={'active'} showDocs={showDocs} showDocsHandler={showDocsHandler} toggleDocsNavbar={toggleDocsNavbar} />
                         {/* <div className="text-gray-text-light my-auto lg:pl-6 lg:ml-auto cursor-pointer"><UserMenu /></div> */}
                       </nav>
                     </div>
