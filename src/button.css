@@ -1,0 +1,32 @@
+.button { 
+  background: #000; 
+  color: white;
+  display: inline-block;
+  padding: 8px 10px; 
+  border: 1px solid #333; 
+  box-shadow: none;   
+  font-family: sans-serif;
+  position: relative;  
+}
+
+.button:before {
+  content: ""; 
+  width: 11px; 
+  height: 16px; 
+  position: absolute; 
+  border-right: 0.1px solid #333; 
+  left: -5.3px; 
+  top: -7.3px; 
+  transform: rotate(45deg); 
+  background: #171617}
+
+.button:after {
+  content: ""; 
+  width: 11px; 
+  height: 16px; 
+  position: absolute; 
+  border-left: 0.1px solid #333; 
+  right: -5.2px; 
+  bottom: -7.3px; 
+  transform: rotate(43deg); 
+  background: #171617}
