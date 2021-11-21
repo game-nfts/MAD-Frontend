@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../grid.css';
 import { useNavigate } from "react-router-dom";
 import Cube from "./Cube";
 import SlantButton from "./SlantButton";
@@ -38,9 +39,9 @@ function Home() {
                 </div>
               </div>
             </div>
-            <div className="mt-8 w-full">
-              <div className={`w-full bg-gray-500 absolute ${hover === '' ? 'z-50' : 'z-10'}`}>
-                <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === '' ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="mt-8 w-full grid-container h-auto">
+              <div className={`grid-inner w-full bg-gray-500 h-full flex ${hover === '' ? 'z-50' : 'z-10'}`}>
+                <div className={`my-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === '' ? 'opacity-100' : 'opacity-0'}`}>
                   <Cube image={itemObj[itemList[activeItem]]} />
                   <div className="flex-shrink-0">
                     <VerticalTabs
@@ -51,13 +52,13 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className={`w-full bg-gray-500 absolute ${hover === 'auction' ? 'z-50' : 'z-10'}`}>
-                <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === 'auction' ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`grid-inner w-full bg-gray-500 h-full flex ${hover === 'auction' ? 'z-50' : 'z-10'}`}>
+                <div className={`my-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === 'auction' ? 'opacity-100' : 'opacity-0'}`}>
                   <AuctionHover />
                 </div>
               </div>
-              <div className={`w-full bg-gray-500 absolute ${hover === 'lease' ? 'z-50' : 'z-10'}`}>
-                <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === 'lease' ? 'opacity-100' : 'opacity-0'}`}>
+              <div className={`grid-inner w-full bg-gray-500 h-full flex ${hover === 'lease' ? 'z-50' : 'z-10'}`}>
+                <div className={`my-auto max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8 flex flex-col-reverse md:flex-row w-full duration-500 transition-opacity ${hover === 'lease' ? 'opacity-100' : 'opacity-0'}`}>
                   <LeaseHover />
                 </div>
               </div>

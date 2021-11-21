@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import ComingSoon from './components/ComingSoon';
+import Footer from './components/Footer';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 
@@ -24,6 +25,7 @@ function App() {
               <Route exact path="/docs" element={<ComingSoon title="DOCS" />} />
             </>
           </Routes>
+          <Footer activePage={activePage} />
         </div>
       </Router>
     </>

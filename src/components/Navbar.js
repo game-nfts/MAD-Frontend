@@ -88,57 +88,6 @@ function Navbar(props) {
 		}
 		</>
   );
-	return (
-		<>
-		{!nonavbar.includes(activePage) ?
-		<>
-			<div className={`z-30 w-full`}>
-				<nav className={`select-none bg-gray-500 shadow-navbar z-30`}>
-					<div className="h-20 py-2 max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-						<div className="relative flex items-center justify-between h-16">
-							{loggedIn?
-								<>					
-								<div className="flex w-full">
-									<Link className="flex-1 flex" to="/">
-										<img className="h-16 z-10 w-auto select-none" src={logo} alt="MAD"/>
-									</Link>
-                  <div className="h-full border-l border-gray-70"/>
-                  <div className="flex sm:flex-1">
-										<div className="my-auto mr-auto flex">
-											<NavbarLinks activePage={activePage} activeClass={'active'}/>
-										</div>
-									</div>
-									<UserMenu /> {/*ethAlias={ethAlias} ethAvatar={ethAvatar} provider={provider} logout={logout} changeNetwork={(chain)=>changeNetwork(chain)} fm={fm} torus={torus} ethAccount={ethAccount} handleShowProfile={showMenu} showProfile={showProfile} handleOpen={handleOpen} */}
-								</div>
-								
-								</>
-							:
-								<div className="flex-1 flex">
-									<Link className="flex-shrink flex items-center" to="/">
-										<img className="h-12 z-10 w-auto" src={logo} alt="MAD"/>
-									</Link>
-                  <div className="my-auto mx-4 sm:mx-12 h-10 border-l border-gray-70 flex-grow-0 flex-shrink"/>
-                  <div className="flex sm:flex-1">
-										<div className="my-auto mr-auto flex">
-											<NavbarLinks activePage={activePage} activeClass={'active'}/>
-										</div>
-									</div>
-                  <UserMenu />
-								</div>
-							}
-						
-						</div>
-					</div>
-				</nav>
-			</div>
-
-		</>
-		:
-		<>
-		</>
-		}
-		</>
-	);
 }
 
 export default Navbar;
