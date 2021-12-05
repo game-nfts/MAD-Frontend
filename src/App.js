@@ -15,7 +15,7 @@ function App() {
   return (
     <>
 			<Router>
-				<div className={`flex flex-col relative min-h-screen bg-gray-500`}>
+				<div className={`flex flex-col relative min-h-screen max-h-screen bg-gray-500`}>
 					<Navbar loggedIn={loggedIn} activePage={activePage} />
 					<Routes>
 						<>

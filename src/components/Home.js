@@ -6,25 +6,27 @@ import SlantButton from "./SlantButton";
 import VerticalTabs from "./VerticalTabs";
 import MoledaoImage from '../assets/moledao.png';
 import CoboImage from '../assets/cobo.png';
+import TronImage from '../assets/tron.png'
 import LeaseHover from "./LeaseHover";
 import AuctionHover from "./AuctionHover";
 
 function Home() {
   let navigate = useNavigate(); // to push an endpoint, call `navigate("/path");`
 
-  const [itemList, handleItemList] = useState([{name: "Cobo Wallet Ads 2021", link: "https://play.decentraland.org/?island=Idv30&position=23%2C18&realm=unicorn"}, {name: "Moledao Hackathon 2021", link: "https://www.cryptovoxels.com/play?coords=N@841E,45S"}, {name: "and More...", link: ""}]);
+  const [itemList, handleItemList] = useState([{name: "Cobo Wallet Ads 2021", link: "https://cobo.com/"}, {name: "Moledao Hackathon 2021", link: "https://www.moledao.io/#/home"}, {name: "Tron*ApeNFT ads 2021", link: "https://tron.network/"}, {name: "and More...", link: ""}]);
   const [activeItem, handleActiveItem] = useState(0);
   const [itemObj, handleItemObj] = useState({
     "Cobo Wallet Ads 2021": CoboImage,
     "Moledao Hackathon 2021": MoledaoImage,
+    "Tron*ApeNFT ads 2021": TronImage,
     "and More...": MoledaoImage,
   });
   const [hover, handleHover] = useState('');
 
   return (
     <>
-      <div className="flex-grow flex flex-col relative text-gray-80 pt-20">
-        <div className="w-full flex-grow flex relative text-white">
+      <div className="flex-grow lg:flex-grow-0 flex flex-col relative text-gray-80 pt-20">
+        <div className="w-full flex-grow lg:flex-grow-0 flex relative text-white">
           <div className="flex flex-col w-full">
             <div className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex flex-col w-full my-8">
