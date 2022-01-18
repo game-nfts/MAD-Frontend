@@ -19,21 +19,36 @@ module.exports = {
       current: 'currentColor',
       white: colors.white,
       gray: {
+        10: 'rgba(0, 0, 0, 0.4)',
+        40: '#4F4F4F',
         60: '#757575',
         70: '#808080',
+        75: '#C0BBBB',
+        80: '#C4C4C4',
+        90: '#E5E5E5',
+        95: '#ECECEC',
         500: '#171617',
+        510: '#16141C',
+        525: '#1B1B1B',
+        550: '#0D0C11',
+        '500-85': 'rgba(23, 22, 23, .85)',
+        'modal-bg': 'rgb(39, 49, 56)',
+        'modal-main': 'rgb(199, 199, 199)',
+        'modal-secondary': 'rgb(136, 136, 136)',
+        'modal-border': 'rgba(195, 195, 195, 0.14)',
+        'modal-hover': 'rgb(16, 26, 32)',
       },
       indigo: colors.indigo,
       red: colors.red,
       yellow: colors.amber,
       green: {
-        50: '#00FFC2',
+        50: '#02E8B1',
         '50h': 'rgba(0,255,194,0.5)',
       },
       pink: {
         50: '#FF79C9',
         70: '#AC0167',
-        80: '#98015B',
+        80: '#E86FB7',
         '80h': 'rgba(152,1,91,0.5)',
       },
       blue: colors.blue,
@@ -46,10 +61,19 @@ module.exports = {
       ...defaultTheme.screens,
     },
     extend: {
+      backgroundImage: {
+        'fade-gray-500': "linear-gradient(180deg, rgba(23, 22, 23, 0.0) 0%, rgba(23, 22, 23, 1.0) 79.76%);"
+      },
       zIndex: {
         '-10': '-10',
+        '1': '1',
+        '2': '2',
         '999': '999',
         '1100': '1100',
+      },
+      gridTemplateColumns: {
+        'modal': 'repeat(auto-fit, minmax(320px, 1fr))',
+        'modal-mobile': '1fr',
       },
     },
     boxShadow: {
@@ -80,6 +104,10 @@ module.exports = {
       '15': '15px',
       '12': '12px',
     },
+    minHeight: {
+      '72': '18rem',
+      ...defaultTheme.minHeight,
+    }
   },
   variants: {
     extend: {
