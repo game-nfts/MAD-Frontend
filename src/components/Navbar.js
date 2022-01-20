@@ -107,8 +107,8 @@ function Navbar(props) {
                   <div className={`block lg:hidden my-auto bg-transparent mr-2`} onClick={() => {if(showMobileNavbar) {handleShowNavbar(false); handleShouldHaveListener(false);} else {showMenu(!showMobileNavbar);}}}>
                     <img src={showMobileNavbar ? clear : ThickMenu} className={`select-none h-6 w-6 sm:h-8 sm:w-8`} />
                   </div>
-	 								<Link className="flex-1 flex" to="/">
-	 									<img className="h-12 my-auto z-10 w-auto select-none" src={logo} alt="MAD"/>
+	 								<Link className="flex flex-shrink-0" to="/">
+	 									<img className="h-10 my-auto z-10 select-none" src={logo} alt="MAD"/>
 	 								</Link>
 									<div className="block lg:hidden text-gray-text-light my-auto lg:pl-6 lg:ml-auto cursor-pointer"><UserMenu showProfile={showProfile} handleShowProfile={showAccountMenu} handleLoginType={handleLoginType} accountData={accountData} handleShowWalletSelect={handleShowWalletSelect} /></div>
                 </div>
