@@ -34,7 +34,8 @@ const NavbarLinks = (props) => {
               </div>
               {showDocs &&
                 <nav id="docs-dropdown" className="flex flex-col block select-none lg:absolute pl-2 pr-3 ml-2 mt-0 lg:mt-2 bg-gray-500 border-r-0 border-b-0 lg:border-r-2 lg:border-b-2 border-gray-70">
-                  <a href={WhitepaperPDF} download="MAD_Whitepaper.pdf" className="w-dropdown-link text-10 xs:text-15 text-gray-70 hover:text-white px-0 py-2 lg:pb-2 lg:px-2">{'Whitepaper'}</a>
+                  {/* Change target="blank" to download="MAD_Whitepaper.pdf" if we want to auto download the pdf on click */}
+                  <a href={WhitepaperPDF} target="_blank" className="w-dropdown-link text-10 xs:text-15 text-gray-70 hover:text-white px-0 py-2 lg:pb-2 lg:px-2">{'Whitepaper'}</a>
                   <a href="https://wiki.mad.xyz" target="_blank" rel="noreferrer" className="w-dropdown-link text-10 xs:text-15 text-gray-70 hover:text-white px-0 py-2 lg:pb-2 lg:px-2">{'GitBook'}</a>
                 </nav>
               }
