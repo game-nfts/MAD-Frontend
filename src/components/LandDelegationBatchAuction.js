@@ -39,7 +39,7 @@ export default function LandDelegationBatchAuction(props) {
                 <div className="text-center mb-0 md:mb-4 md:text-left text-2xl sm:text-3xl md:text-4xl">Auction</div>
                 <div className="flex flex-row md:flex-col w-full justify-evenly md:justify-start">
                   <div className="mt-6 md:mt-2 lg:mt-4">
-                    <div className="text-gray-80 mr-2 md:mr-0">Current Highest Bid</div>
+                    <div className="text-gray-80 mr-6 md:mr-0">Highest Bid</div>
                     <div className="flex flex-row my-2">
                       <img className="h-8 mr-2 my-auto" src={EthIcon}/>
                       <div className="text-4xl">{auctionBidEth}</div>
@@ -53,7 +53,7 @@ export default function LandDelegationBatchAuction(props) {
                         <div className="text-4xl font-bold my-2 md:mb-0 md:mt-1 text-right md:text-left">{hours}</div>
                         <div className="text-sm text-gray-80 text-center md:text-left">Hours</div>
                       </div>
-                      <div className="flex flex-col mx-8">
+                      <div className="flex flex-col mx-4 md:mx-8">
                         <div className="text-4xl font-bold my-2 md:mb-0 md:mt-1 text-right md:text-left">{minutes}</div>
                         <div className="text-sm text-gray-80 text-center md:text-left">Minutes</div>
                       </div>

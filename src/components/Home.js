@@ -6,6 +6,7 @@ import BatchAuction from "./BatchAuction";
 import LandDelegation from "./LandDelegation";
 import Logo from './Logo';
 import LandDelegationBatchAuction from './LandDelegationBatchAuction';
+import RadicalMarket from './RadicalMarket';
 
 function Home(props) {
   // let navigate = useNavigate(); // to push an endpoint, call `navigate("/path");`
@@ -28,8 +29,8 @@ function Home(props) {
             <div id="batch-auction-container" className="flex flex-col w-full mt-10 md:mt-20">
               <LandDelegationBatchAuction />
             </div>
-            <div id="land-delegation-container" className="flex flex-col w-full mt-20">
-              <LandDelegation />
+            <div id="radical-market-container" className="flex flex-col w-full mt-20">
+              <RadicalMarket />
             </div>
           </div>
         </div>
