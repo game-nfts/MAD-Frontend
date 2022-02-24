@@ -49,8 +49,8 @@ function PastAds() {
 
   return (
     <>
-			<div className="flex flex-col sm:flex-row mx-4 sm:mx-0 sm:mt-10">
-        <div className="sm:ml-0 sm:h-full flex-col flex-shrink-0 flex flex-col px-2 sm:px-4 md:px-8 lg:pl-8 lg:pr-24">
+			<div className="flex flex-col sm:flex-row mx-4 sm:mx-0 mt-10">
+        <div className="sm:ml-0 sm:h-full flex-col flex-shrink-0 flex flex-col px-2 sm:px-4 md:px-8 lg:pl-8 lg:pr-24 pb-4 sm:pb-0">
           <div className="text-green-10 text-3xl md:text-4xl font-commuter font-semibold">PAST ADS</div>
           <div className="h-full w-full flex flex-row">
             <div className="w-2 mr-4 h-full bg-gradient-to-b from-green-10 to-[rgba(196, 196, 196, 0)]"/>

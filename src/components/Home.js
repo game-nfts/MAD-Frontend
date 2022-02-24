@@ -25,9 +25,8 @@ function Home(props) {
               <Logo />
               <PastAds />
             </div>
-            <div id="batch-auction-container" className="flex flex-col w-full mt-20">
+            <div id="batch-auction-container" className="flex flex-col w-full mt-10 md:mt-20">
               <LandDelegationBatchAuction />
-              <ScrollDown scrollId="land-delegation-container" />
             </div>
             <div id="land-delegation-container" className="flex flex-col w-full mt-20">
               <LandDelegation />

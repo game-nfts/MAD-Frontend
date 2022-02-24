@@ -22,6 +22,7 @@ module.exports = {
         80: '#C4C4C4',
         90: '#E5E5E5',
         95: '#ECECEC',
+        490: '#232323',
         500: '#171617',
         510: '#16141C',
         525: '#1B1B1B',
@@ -35,17 +36,24 @@ module.exports = {
       },
       indigo: colors.indigo,
       red: colors.red,
-      yellow: colors.amber,
+      yellow: {
+        ...colors.amber,
+        'mad-yellow': '#EBFF29',
+      },
       green: {
         10: '#AAD2C2',
         50: '#02E8B1',
         '50h': 'rgba(0,255,194,0.5)',
       },
       pink: {
+        10: '#F4E6F3',
         50: '#FF79C9',
         70: '#AC0167',
         80: '#E86FB7',
         '80h': 'rgba(152,1,91,0.5)',
+      },
+      purple: {
+        'mad-purple': '#D4B4D6',
       },
       blue: colors.blue,
       orange: colors.orange,
@@ -72,6 +80,13 @@ module.exports = {
         'modal': 'repeat(auto-fit, minmax(320px, 1fr))',
         'modal-mobile': '1fr',
       },
+      width: {
+        '48/100': '48%',
+        '100': '25rem',
+        '144': '36rem',
+        '192': '48rem',
+        '240': '60rem',
+      },
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -85,6 +100,7 @@ module.exports = {
       none: 'none',
       navbar: '0px 4px 4px rgba(0, 0, 0, 0.25)',
       adbanner: '0.5rem 0.5rem #AAD2C2',
+      aucbanner: '-1.5rem 1.5rem #D4B4D6',
     },
     fontSize: {
       'xs': '.75rem',
