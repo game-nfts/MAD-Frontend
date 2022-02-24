@@ -17,7 +17,9 @@ function UserMenu(props) {
   if(!account) {
     return (
       <>
-        <Button onClick={() => {handleShowWalletSelect(true);}} text={<div className="text-center leading-none ">CONNECT<br/>WALLET</div>} borderColor="white" className="text-white bg-gray-500 hover:bg-white hover:text-gray-500 w-full px-8" />
+        <div className="lg:mr-6">
+          <Button onClick={() => {handleShowWalletSelect(true);}} text={<div className="text-center leading-none ">CONNECT<br/>WALLET</div>} borderColor="white" className="text-white bg-gray-500 hover:bg-white hover:text-gray-500 w-full px-8" />
+        </div>
       </>
     );
   }

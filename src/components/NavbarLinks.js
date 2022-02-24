@@ -14,12 +14,12 @@ const NavbarLinks = (props) => {
               } catch(err) {
                 navigate('../', {replace: true});
               }
-            }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mr-6 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/auction' ? 'text-white' : 'text-white'}`}>
+            }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mr-5 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/auction' ? 'text-white' : 'text-white'}`}>
             AUCTION
           </div>
           <div onClick={() => {
               navigate('../lease', {replace: true});
-            }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mx-6 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/lease' ? 'text-white' : 'text-white'}`}>
+            }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mx-5 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/lease' ? 'text-white' : 'text-white'}`}>
             LEASE MY ESTATES
           </div>
           <div onClick={() => {
@@ -28,12 +28,12 @@ const NavbarLinks = (props) => {
               } catch(err) {
                 navigate('../', {replace: true});
               }
-            }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mx-6 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/lease' ? 'text-white' : 'text-white'}`}>
+            }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mx-5 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/lease' ? 'text-white' : 'text-white'}`}>
             RADICAL MARKET
           </div>
           <div className="flex flex-col lg:flex-row w-full lg:w-auto pb-2 lg:pb-0">
             <div data-hover="" data-delay="0" className="nav-link w-dropdown ml-0 mr-0 align-top my-auto">
-              <div className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:ml-6 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/docs' ? 'text-white' : 'text-white'}`} onClick={() => {
+              <div className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:ml-5 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/docs' ? 'text-white' : 'text-white'}`} onClick={() => {
                 if(showDocs) {
                   toggleDocsNavbar();
                 } else {
