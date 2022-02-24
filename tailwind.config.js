@@ -2,17 +2,12 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'media' or 'class'
   important: true,
   theme: {
     fontFamily: {
-      'sans': ['ui-sans-serif', 'system-ui'],
-      'serif': ['ui-serif', 'Georgia'],
-      'mono': ['ui-monospace', 'SFMono-Regular'],
-      'tabs': ['AT Arges Black Cond', 'ui-sans-serif', 'system-ui'],
-    },
-    backgroundImage: {
-      'button': "url('./assets/button.svg')"
+      'nexa': ['Nexa', 'sans'],
+      'commuter': ['CommuterSans', 'sans'],
     },
     colors: {
       transparent: 'transparent',
@@ -42,6 +37,7 @@ module.exports = {
       red: colors.red,
       yellow: colors.amber,
       green: {
+        10: '#AAD2C2',
         50: '#02E8B1',
         '50h': 'rgba(0,255,194,0.5)',
       },
@@ -62,7 +58,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'fade-gray-500': "linear-gradient(180deg, rgba(23, 22, 23, 0.0) 0%, rgba(23, 22, 23, 1.0) 79.76%);"
+        'fade-gray-500': "linear-gradient(180deg, rgba(23, 22, 23, 0.0) 0%, rgba(23, 22, 23, 1.0) 79.76%)",
+        'button': "url('./assets/button.svg')"
       },
       zIndex: {
         '-10': '-10',
@@ -87,6 +84,7 @@ module.exports = {
       inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
       none: 'none',
       navbar: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+      adbanner: '0.5rem 0.5rem #AAD2C2',
     },
     fontSize: {
       'xs': '.75rem',

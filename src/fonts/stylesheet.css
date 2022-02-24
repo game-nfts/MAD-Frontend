@@ -1,36 +1,39 @@
 @font-face {
-    font-family: 'AT Arges Extreme Black Cond';
-    src: url('ATArges-ExtremeBlackCond.woff2') format('woff2'),
-        url('ATArges-ExtremeBlackCond.woff') format('woff');
-    font-weight: 900;
+    font-family: 'CommuterSans';
+    src: url('Fontspring-DEMO-commuterssans-regular.otf') format('opentype');
+    font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'AT Arges Black Cond';
-    src: url('ATArges-BlackCondOblique.woff2') format('woff2'),
-        url('ATArges-BlackCondOblique.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'AT Arges Extreme Black Cond';
-    src: url('ATArges-ExtremeBlackCondOblique.woff2') format('woff2'),
-        url('ATArges-ExtremeBlackCondOblique.woff') format('woff');
-    font-weight: 900;
-    font-style: italic;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'AT Arges Black Cond';
-    src: url('ATArges-BlackCond.woff2') format('woff2'),
-        url('ATArges-BlackCond.woff') format('woff');
-    font-weight: 900;
+    font-family: 'CommuterSans';
+    src: url('Fontspring-DEMO-commuterssans-bold.otf') format('opentype');
+    font-weight: bold;
     font-style: normal;
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'CommuterSans';
+    src: url('Fontspring-DEMO-commuterssans-italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'CommuterSans';
+    src: url('Fontspring-DEMO-commuterssans-light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Nexa';
+    src: url('Fontfabric_-_Nexa_Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}

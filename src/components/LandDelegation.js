@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SlantButton from "./SlantButton";
+import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import PeaksIcon from '../assets/peaks.svg';
 import LandDelegationImage from '../assets/land_delegation.svg';
@@ -15,7 +15,7 @@ function LandDelegation() {
         <div className="text-3xl sm:text-4xl md:text-5xl font-bold mx-auto">Land Delegation</div>
         <div className="mx-auto text-center sm:w-3/4 text-lg italic font-extralight mt-4">Land providers can delegate any amount of land in the metaverse worlds to the DAO. Users can <span className="font-bold">view current yield</span>, <span className="font-bold">harvest their yield</span>, or even <span className="font-bold">redeem their estate anytime on our website</span>.</div>
         <div className="mx-auto mt-8 mb-12">
-          <SlantButton onClick={() => {navigate('../lease', {replace: true})}} text="Lease My Estates" color="green" className="bg-gray-500 hover:bg-green-50 text-green-50 hover:text-gray-500 w-full" />
+          <Button onClick={() => {navigate('../lease', {replace: true})}} text="Lease My Estates" color="green" className="bg-gray-500 hover:bg-green-50 text-green-50 hover:text-gray-500 w-full" />
         </div>
         <div className="relative flex flex-row">
           <div className="w-full min-h-72">

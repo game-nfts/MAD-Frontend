@@ -1,4 +1,4 @@
-import SlantButton from "./SlantButton";
+import Button from "./Button";
 import BatchAuctionImage from '../assets/batch_auction.svg';
 import EthIcon from '../assets/eth_logo.svg';
 import Hammer from '../assets/hammer.png';
@@ -27,7 +27,7 @@ function BatchAuction() {
         <div className="text-3xl sm:text-4xl md:text-5xl font-bold mx-auto">Batch Auction</div>
         <div className="mx-auto text-center sm:w-3/4 text-lg italic font-extralight mt-4">As MAD batches chunks of lands together, advertisement rights are auctioned. With a collection of land owners, <span className="font-bold">the value of parcels will increase</span> and can be <span className="font-bold">put into greater use</span>.</div>
         <div className="mx-auto mt-8 mb-12">
-          <SlantButton onClick={() => {navigate('../auction', {replace: true})}} text="Attend Auction" color="pink" className="bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full" />
+          <Button onClick={() => {navigate('../auction', {replace: true})}} text="Attend Auction" color="pink" className="bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full" />
         </div>
         <div className="w-full flex flex-col md:flex-row">
           <div className="w-1/3 md:w-auto mx-auto flex">
