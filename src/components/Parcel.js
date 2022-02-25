@@ -1,5 +1,5 @@
 import LocationIcon from '../assets/location.svg';
-import SlantButton from './SlantButton';
+import Button from './Button';
 
 const Parcel = (props) => {
 
@@ -39,16 +39,16 @@ const Parcel = (props) => {
                 parcel.updateOperator ?
                 <>
                   <div>
-                    <SlantButton onClick={() => {cancelCallback(parcel);}} text="Cancel" light={true} className="bg-gray-525 hover:bg-black text-white w-full" />
+                    <Button onClick={() => {cancelCallback(parcel);}} text="Cancel" light={true} className="bg-gray-525 hover:bg-black text-white w-full" />
                   </div>
                   <div className="ml-auto">
-                    <SlantButton onClick={() => {claimProfitCallback(parcel);}} text="Claim Profit" disabled={true} light={true} color={true ? '' : 'green'} className={`${true ? '' : 'bg-gray-525 hover:bg-green-50 text-green-50 hover:text-gray-500'} w-full`} />
+                    <Button onClick={() => {claimProfitCallback(parcel);}} text="Claim Profit" disabled={true} light={true} color={true ? '' : 'green'} className={`${true ? '' : 'bg-gray-525 hover:bg-green-50 text-green-50 hover:text-gray-500'} w-full`} />
                   </div>
                 </>
                 :
                 <>
                   <div className="ml-auto">
-                    <SlantButton onClick={() => {leaseCallback(parcel);}} text="Lease" light={true} color="pink" className="bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full" />
+                    <Button onClick={() => {leaseCallback(parcel);}} text="Lease" light={true} color="pink" className="bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full" />
                   </div>
                 </>
               }

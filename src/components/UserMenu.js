@@ -1,6 +1,6 @@
 import { useWeb3React } from "@web3-react/core";
 import { useNavigate } from "react-router-dom";
-import SlantButton from "./SlantButton";
+import Button from "./Button";
 import Identicon from 'react-identicons';
 import UserDisplay from './UserDisplay';
 import OpenWalletIcon from '../assets/open_wallet.svg';
@@ -17,7 +17,9 @@ function UserMenu(props) {
   if(!account) {
     return (
       <>
-        <SlantButton onClick={() => {handleShowWalletSelect(true);}} text="Sign In" className="bg-gray-500 hover:bg-black w-full" />
+        <div className="lg:mr-6">
+          <Button onClick={() => {handleShowWalletSelect(true);}} text={<div className="text-center leading-none ">CONNECT<br/>WALLET</div>} borderColor="white" className="text-white bg-gray-500 hover:bg-white hover:text-gray-500 w-full px-8" />
+        </div>
       </>
     );
   }

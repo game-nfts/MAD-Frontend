@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import _ from 'lodash';
 import LeaseM from '../assets/lease_m.svg';
-import SlantButton from './SlantButton';
+import Button from './Button';
 import CardImage from '../assets/card.png';
 import ParcelGroup from './ParcelGroup';
 import { getDecentralandEstates, getDecentralandParcels, MAD_ADDRESS } from '../helpers/graphql';
@@ -209,10 +209,10 @@ function LeaseEstates(props) {
               <>
                 <div className="w-full flex flex-col sm:flex-row justify-center px-10">
                   <div className="sm:ml-auto sm:mr-4">
-                    <SlantButton onClick={() => {}} text="Lease All" color="pink" light={true} className="mt-4 bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full md:ml-auto" />
+                    <Button onClick={() => {}} text="Lease All" color="pink" light={true} className="mt-4 bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full md:ml-auto" />
                   </div>
                   <div className="sm:mr-auto sm:ml-4">
-                    <SlantButton onClick={() => {}} text="Claim All Profit" disabled={true} color="green" light={true} color={true ? '' : 'green'} className={`${true ? '' : 'bg-gray-525 hover:bg-green-50 text-green-50 hover:text-gray-500'} mt-4 w-full`} />
+                    <Button onClick={() => {}} text="Claim All Profit" disabled={true} color="green" light={true} color={true ? '' : 'green'} className={`${true ? '' : 'bg-gray-525 hover:bg-green-50 text-green-50 hover:text-gray-500'} mt-4 w-full`} />
                   </div>
                 </div>
                 <div>
