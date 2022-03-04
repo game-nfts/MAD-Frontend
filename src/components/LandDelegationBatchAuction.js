@@ -72,7 +72,10 @@ export default function LandDelegationBatchAuction(props) {
           <div className="w-full flex flex-col px-6 md:pl-0 md:pr-16">
             <div className="text-purple-mad-purple text-3xl md:text-4xl font-commuter font-semibold text-center sm:text-left">{`Land Delegation & Batch Auction`}</div>
             <div className="text-white mt-3 mb-6 text-center sm:text-left">As MAD batches chunks of lands together, advertisement rights are auctioned. With a collection of land owners, the value of parcels will increase and can be put to greater use.</div>
-            <Button onClick={() => {navigate('../auction', {replace: true})}} text="Attend Auction" borderColor="yellow-mad-yellow" className="text-center text-yellow-mad-yellow bg-gray-500 hover:bg-yellow-mad-yellow hover:text-gray-500 w-full sm:w-auto sm:mr-auto px-8" />
+            <Button onClick={() => {
+              // navigate('../auction', {replace: true});
+              window.open("https://discord.gg/RnMhaZBRgR", '_blank'); // Open discord invite link for now
+              }} text="Attend Auction" borderColor="yellow-mad-yellow" className="text-center text-yellow-mad-yellow bg-gray-500 hover:bg-yellow-mad-yellow hover:text-gray-500 w-full sm:w-auto sm:mr-auto px-8" />
 
             <div className="text-white mt-12 mb-6 text-center sm:text-right">Land providers can delegate any amount of land in the metaverse worlds to the DAO. Landowners can view current yield and harvest their yield on MAD.</div>
             <Button onClick={() => {navigate('../lease', {replace: true})}} text="I Have Land!" borderColor="pink-10" className="text-center text-pink-10 bg-gray-500 hover:bg-pink-10 hover:text-gray-500 w-full sm:w-auto sm:ml-auto px-8" />
