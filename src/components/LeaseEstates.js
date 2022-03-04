@@ -168,7 +168,7 @@ function LeaseEstates(props) {
   }
   return (
     <>
-      <div className="w-full flex flex-col text-gray-95">
+      <div className="w-full flex flex-col text-gray-95" onDragStart={e => e.preventDefault()}>
         <div className="w-full flex flex-col pt-20 px-10">
           <div className="w-full flex flex-col-reverse md:flex-row max-w-7xl mx-auto my-5 xs:my-10 md:my-20 justify-center">
             <div className="flex flex-col w-full md:w-2/3 mx-auto md:ml-10 md:mr-12 my-auto">

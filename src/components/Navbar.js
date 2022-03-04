@@ -110,7 +110,7 @@ function Navbar(props) {
 										</div>
 									}
 	 								<Link className="flex flex-shrink-0" to="/">
-	 									<img className="h-10 lg:relative lg:h-20 lg:mt-4 my-auto z-10 select-none" src={logo} alt="MAD"/>
+	 									<img className="h-10 lg:relative lg:h-20 lg:mt-4 my-auto z-10 select-none" src={logo} alt="MAD" onDragStart={e => e.preventDefault()}/>
 	 								</Link>
 									<div className="block lg:hidden text-white my-auto lg:pl-6 cursor-pointer ml-auto"><UserMenu showProfile={showProfile} handleShowProfile={showAccountMenu} handleLoginType={handleLoginType} accountData={accountData} handleShowWalletSelect={handleShowWalletSelect} /></div>
                 </div>

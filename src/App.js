@@ -21,15 +21,20 @@ function App() {
   const [parcelContract, handleParcelContract] = useState(null);
   const [parcelInstance, handleParcelInstance] = useState(null);
   const [cvContract, handleCvContract] = useState(null);
-  const [ensEnabled, handleEnsEnabled] = useState(false);
   const [loginType, handleLoginType] = useStateWithSessionStorage('loginType', null);
   const [ethAlias, handleEthAlias] = useState(null);
 	const [ethAvatar, handleEthAvatar] = useState(null);
   const [showWalletSelect, handleShowWalletSelect] = useState(false);
-  const [loggedIn, handleLoggedIn] = useState(false);
   const [activePage, handleActivePage] = useState("/home");
+  const [activatingConnector, setActivatingConnector] = useState();
   const context = useWeb3React();
   const { connector, library, chainId, account, activate, deactivate, active, error } = context;
+
+  // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
+  const triedEager = useEagerConnect(loginType);
+
+  // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
+  useInactiveListener(!triedEager || !!activatingConnector);
 
   useEffect(() => {
     (async () => {
@@ -52,7 +57,6 @@ function App() {
   }, [active]);
 
   // handle logic to recognize the connector currently being activated
-  const [activatingConnector, setActivatingConnector] = useState()
   useEffect(() => {
     if (activatingConnector && activatingConnector === connector) {
       setActivatingConnector(undefined)
@@ -74,9 +78,7 @@ function App() {
 						handleEthAvatar(null);
 						handleEthAlias(null);
 					}
-					handleEnsEnabled(true);
 				}catch(err){
-					handleEnsEnabled(false);
 					handleEthAvatar(null);
 					handleEthAlias(null);
 				}
@@ -84,19 +86,13 @@ function App() {
 		})();
 	}, [account, library]);
 
-  // handle logic to eagerly connect to the injected ethereum provider, if it exists and has granted access already
-  const triedEager = useEagerConnect(loginType);
-
-  // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
-  useInactiveListener(!triedEager || !!activatingConnector);
-
   document.body.classList.add('bg-gray-500');
 
   return (
     <>
 			<Router>
 				<div className={`flex flex-col relative min-h-screen max-h-screen bg-gray-500 font-nexa`}>
-					<Navbar accountData={{ethAlias: ethAlias, ethAvatar: ethAvatar}} handleLoginType={handleLoginType} loggedIn={loggedIn} activePage={activePage} handleShowWalletSelect={handleShowWalletSelect} />
+					<Navbar accountData={{ethAlias: ethAlias, ethAvatar: ethAvatar}} handleLoginType={handleLoginType} activePage={activePage} handleShowWalletSelect={handleShowWalletSelect} />
 					<Routes>
 						<>
 							<Route exact path="/" element={<Home handleActivePage={handleActivePage} />} />
@@ -111,7 +107,9 @@ function App() {
       </Router>
       {showWalletSelect &&
         <WalletSelect handleLoginType={handleLoginType} onClose={() => {
-          handleLoginType(null);
+          if(!account) {
+            handleLoginType(null);
+          }
           handleShowWalletSelect(false);
         }}/>
       }

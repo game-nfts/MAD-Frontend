@@ -43,10 +43,10 @@ const NavbarLinks = (props) => {
                 DOCS
               </div>
               {showDocs &&
-                <nav id="docs-dropdown" className="flex flex-col block select-none lg:absolute pl-2 md:pb-2 mt-0 lg:mt-2 bg-gray-500 border-r-0 border-b-0 lg:border-r-2 lg:border-b-2 border-gray-70">
+                <nav id="docs-dropdown" className="flex flex-col block select-none lg:absolute pl-2 lg:pl-0 mt-0 lg:mt-2 bg-gray-500 border-r-0 border-b-0 lg:rounded-md lg:ring-1 lg:ring-gray-60">
                   {/* Change target="blank" to download="MAD_Whitepaper.pdf" if we want to auto download the pdf on click */}
-                  <a href={WhitepaperPDF} target="_blank" className="w-dropdown-link text-10 xs:text-15 text-white hover:bg-white rounded-md hover:text-gray-500 pl-2 md:px-0 py-2 lg:pb-2 lg:px-2">{'WHITEPAPER'}</a>
-                  <a href="https://wiki.mad.xyz" target="_blank" rel="noreferrer" className="w-dropdown-link text-10 xs:text-15 text-white hover:bg-white rounded-md hover:text-gray-500 pl-2 md:px-0 py-2 lg:pb-2 lg:px-2">{'GITBOOK'}</a>
+                  <a href={WhitepaperPDF} target="_blank" className="w-dropdown-link text-10 xs:text-15 text-white hover:bg-white rounded-md hover:text-gray-500 pl-2 md:px-0 py-2 lg:py-2 lg:px-4">{'WHITEPAPER'}</a>
+                  <a href="https://wiki.mad.xyz" target="_blank" rel="noreferrer" className="w-dropdown-link text-10 xs:text-15 text-white hover:bg-white rounded-md hover:text-gray-500 pl-2 md:px-0 py-2 lg:py-2 lg:px-4">{'GITBOOK'}</a>
                 </nav>
               }
             </div>

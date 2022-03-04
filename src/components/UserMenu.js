@@ -42,14 +42,14 @@ function UserMenu(props) {
               }
             </div>
           </div>
-          <div id="account-dropdown" className={`z-40 ${showProfile ? 'block' : 'hidden'} text-gray-60 text-12 w-72 sm:text-15 sm:w-80 font-normal z-10 origin-top-right absolute right-0 mt-2 rounded-md shadow-xl pt-3 sm:pt-4 bg-gray-500 ring-1 ring-gray-60 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
+          <div id="account-dropdown" className={`z-40 ${showProfile ? 'block' : 'hidden'} text-white text-12 w-72 sm:text-15 sm:w-80 font-normal z-10 origin-top-right absolute right-0 mt-2 rounded-md shadow-xl pt-3 bg-gray-500 ring-1 ring-gray-60 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabIndex="-1">
 
             <div className="px-4">
               <UserDisplay accountData={accountData} />
             </div>
             {!!connector.torus &&
             <div className="flex justify-center my-4">
-              <div className="flex cursor-pointer ml-auto mr-2 px-3 py-1 ring-1 ring-gray-60 rounded-md bg-gray-500 hover:bg-black text-gray-60 text-10 block px-4" role="menuitem" tabIndex="-1" id="user-menu-item-2" onClick={() => {
+              <div className="flex cursor-pointer ml-auto mr-2 px-3 py-1 ring-1 ring-gray-60 rounded-md bg-gray-500 hover:bg-black text-white text-10 block px-4" role="menuitem" tabIndex="-1" id="user-menu-item-2" onClick={() => {
                 connector.torus.showWallet("home");
               }}>
                 <div className="my-auto">
@@ -59,7 +59,7 @@ function UserMenu(props) {
                     Open Wallet
                 </div>
               </div> 
-              <div className="flex cursor-pointer mr-auto ml-2 px-3 py-1 rounded-md ring-1 ring-gray-60 rounded-md bg-gray-500 hover:bg-black text-gray-60 text-10 block px-4" role="menuitem" tabIndex="-1" id="user-menu-item-2" onClick={() => {
+              <div className="flex cursor-pointer mr-auto ml-2 px-3 py-1 rounded-md ring-1 ring-gray-60 rounded-md bg-gray-500 hover:bg-black text-white text-10 block px-4" role="menuitem" tabIndex="-1" id="user-menu-item-2" onClick={() => {
                 connector.torus.initiateTopup("moonpay", {selectedAddress: account});
               }}>
                 <div className="my-auto">
@@ -103,7 +103,7 @@ function UserMenu(props) {
                 <div className="flex-col justify-center mr-2 my-auto">
                     <img src={LogoutIcon}/>
                 </div>
-                <div className="text-gray-60">
+                <div className="text-white">
                     Log Out
                 </div>
             </div> 
