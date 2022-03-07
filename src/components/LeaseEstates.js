@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import _ from 'lodash';
 import LeaseM from '../assets/lease_m.svg';
 import Button from './Button';
-import CardImage from '../assets/card.png';
 import ParcelGroup from './ParcelGroup';
 import { getDecentralandEstates, getDecentralandParcels, MAD_ADDRESS } from '../helpers/graphql';
 import { useWeb3React } from '@web3-react/core';
@@ -23,7 +22,7 @@ function LeaseEstates(props) {
 
   useEffect(() => {
     handleActivePage("/lease");
-  }, []);
+  }, [handleActivePage]);
 
   useEffect(() => {
     switch(layer) {
@@ -33,8 +32,10 @@ function LeaseEstates(props) {
       case 1:
         handleActiveParcels(cParcels);
         break;
+      default:
+        break;
     }
-  }, [layer]);
+  }, [layer, dParcels, cParcels]);
 
   useEffect(() => {
     (async () => {
@@ -163,7 +164,9 @@ function LeaseEstates(props) {
       case 1:
         return 'CryptoVoxels';
       case 2:
-        return 'The Sandbox'
+        return 'The Sandbox';
+      default:
+        return '';
     }
   }
   return (
@@ -176,7 +179,7 @@ function LeaseEstates(props) {
               <div className="mx-auto md:mx-0 text-center md:text-left text-xl sm:text-2xl lg:text-3xl font-extralight">Lease your Virtual Estates to us and claim your profit</div>
             </div>
             <div className="w-1/3 md:w-1/6 md:my-auto mx-auto mb-8">
-              <img className="mx-auto w-full" src={LeaseM}/>
+              <img className="mx-auto w-full" src={LeaseM} alt="" />
             </div>
           </div>
           {/* <div className="flex flex-row w-full flex-wrap justify-around mt-4">
@@ -212,7 +215,7 @@ function LeaseEstates(props) {
                     <Button onClick={() => {}} text="Lease All" color="pink" light={true} className="mt-4 bg-gray-500 hover:bg-pink-80 text-pink-80 hover:text-gray-500 w-full md:ml-auto" />
                   </div>
                   <div className="sm:mr-auto sm:ml-4">
-                    <Button onClick={() => {}} text="Claim All Profit" disabled={true} color="green" light={true} color={true ? '' : 'green'} className={`${true ? '' : 'bg-gray-525 hover:bg-green-50 text-green-50 hover:text-gray-500'} mt-4 w-full`} />
+                    <Button onClick={() => {}} text="Claim All Profit" disabled={true} light={true} color={true ? '' : 'green'} className={`${true ? '' : 'bg-gray-525 hover:bg-green-50 text-green-50 hover:text-gray-500'} mt-4 w-full`} />
                   </div>
                 </div>
                 <div>

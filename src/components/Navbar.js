@@ -106,7 +106,7 @@ function Navbar(props) {
                 <div className="h-16 flex flex-row">
 									{!nonlinks.includes(location.pathname) &&
 										<div className={`block lg:hidden my-auto bg-transparent mr-2`} onClick={() => {if(showMobileNavbar) {handleShowNavbar(false); handleShouldHaveListener(false);} else {showMenu(!showMobileNavbar);}}}>
-											<img src={showMobileNavbar ? clear : ThickMenu} className={`select-none h-6 w-6 sm:h-8 sm:w-8`} />
+											<img src={showMobileNavbar ? clear : ThickMenu} className={`select-none h-6 w-6 sm:h-8 sm:w-8`} alt="Toggle Menu" />
 										</div>
 									}
 	 								<Link className="flex flex-shrink-0" to="/">

@@ -7,7 +7,7 @@ export const useStateWithSessionStorage = (StorageKey, initialValue) => {
 
 	useEffect(() => {
 		sessionStorage.setItem(StorageKey, JSON.stringify(value));
-	}, [value]);
+	}, [value, StorageKey]);
 
 	return [value, setValue];
 };

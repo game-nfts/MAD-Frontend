@@ -6,7 +6,6 @@ import UserDisplay from './UserDisplay';
 import OpenWalletIcon from '../assets/open_wallet.svg';
 import DollarIcon from '../assets/Dollar.svg';
 import LogoutIcon from '../assets/logout.svg';
-import { torus } from '../helpers/connectors';
 
 function UserMenu(props) {
   const { showProfile, handleShowProfile, accountData, handleShowWalletSelect, handleLoginType } = props;
@@ -34,7 +33,7 @@ function UserMenu(props) {
               handleShowProfile('override', !showProfile);
             }}>
               <span className="sr-only">Open user menu</span>
-              {accountData?.ethAvatar ? <img className="w-11 h-11 rounded-full object-cover" src={accountData.ethAvatar} />
+              {accountData?.ethAvatar ? <img className="w-11 h-11 rounded-full object-cover" src={accountData.ethAvatar} alt="" />
               :
               <div className="p-2">
                 <Identicon string={account} size="25" palette={['#D7EEFF', '#eef2ff', '#991A1A', '#FFDECC', '#E98234', '#D98234','#EE9F63', '#464648']} />
@@ -53,7 +52,7 @@ function UserMenu(props) {
                 connector.torus.showWallet("home");
               }}>
                 <div className="my-auto">
-                    <img src={OpenWalletIcon} className="mr-2"/>
+                    <img src={OpenWalletIcon} className="mr-2" alt="" />
                 </div>
                 <div>
                     Open Wallet
@@ -63,7 +62,7 @@ function UserMenu(props) {
                 connector.torus.initiateTopup("moonpay", {selectedAddress: account});
               }}>
                 <div className="my-auto">
-                  <img src={DollarIcon} className="mr-2"/>
+                  <img src={DollarIcon} className="mr-2" alt="" />
                 </div>
                 <div>
                   Deposit
@@ -101,7 +100,7 @@ function UserMenu(props) {
             }} >
                 
                 <div className="flex-col justify-center mr-2 my-auto">
-                    <img src={LogoutIcon}/>
+                    <img src={LogoutIcon} alt="Logout" />
                 </div>
                 <div className="text-white">
                     Log Out

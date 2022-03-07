@@ -32,7 +32,7 @@ function PastAds() {
     if(hover) {
       return;
     }
-    if(playingVideoIndex == videoArray.length - 2) {
+    if(playingVideoIndex === videoArray.length - 2) {
       handlePlayingVideoIndex(0);
     } else {
       handlePlayingVideoIndex(playingVideoIndex + 1);
@@ -89,12 +89,12 @@ function PastAds() {
               We also need a placeholder image to display the box shadow (otherwise
               it flickers when the videos switch). We finally need our ReactPlayer
               to play the actual video. */}
-          <img className="relative left-0 right-0 opacity-0" src={Placeholder} />
+          <img className="relative left-0 right-0 opacity-0" src={Placeholder} alt="" />
           <div className="absolute left-0 -ml-2 mr-2 -mt-2 mb-2 top-0 shadow-adbanner">
-            <img className="w-full h-auto opacity-0" src={Placeholder} />
+            <img className="w-full h-auto opacity-0" src={Placeholder} alt="" />
           </div>
           <div className="absolute left-0 -ml-2 mr-2 -mt-2 mb-2 top-0">
-            <ReactPlayer ref={player} url={getPlayingVideo()} fallback={<img src={getPlayingImage()} />} playing={true} muted={true} width="100%" height="auto" onEnded={() => {
+            <ReactPlayer ref={player} url={getPlayingVideo()} fallback={<img src={getPlayingImage()} alt="" />} playing={true} muted={true} width="100%" height="auto" onEnded={() => {
               player.current.seekTo(0);
               seekNextVideoIndex();
             }}/>

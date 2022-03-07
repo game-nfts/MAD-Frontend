@@ -4,7 +4,7 @@ import { useWeb3React } from '@web3-react/core'
 import { injected, torus } from './connectors'
 
 export function useEagerConnect(loginType) {
-  const { activate, active } = useWeb3React()
+  const { activate, active } = useWeb3React();
 
   const [tried, setTried] = useState(false)
 
@@ -24,7 +24,7 @@ export function useEagerConnect(loginType) {
         }
       });
     }
-  }, []);
+  }, [loginType, activate]);
 
   // if the connection worked, wait until we get confirmation of that to flip the flag
   useEffect(() => {
@@ -37,7 +37,7 @@ export function useEagerConnect(loginType) {
 }
 
 export function useInactiveListener(suppress = false) {
-  const { active, error, activate } = useWeb3React()
+  const { active, error, activate } = useWeb3React();
 
   useEffect(() => {
     const { ethereum } = window

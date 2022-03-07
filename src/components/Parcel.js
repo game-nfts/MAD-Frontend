@@ -7,7 +7,7 @@ const Parcel = (props) => {
 
   return (
     <div key={`op-${i}`} className="h-100 w-64 mx-6 bg-gray-bg rounded-sm flex flex-col mt-10 shadow-xl">
-      <img className="h-auto w-full m-auto min-h-1/2 min-w-full" src={parcel.image} />
+      <img className="h-auto w-full m-auto min-h-1/2 min-w-full" src={parcel.image} alt="" />
       <div className="h-1/2 w-full px-4 py-2">
         <div className="w-full h-full flex flex-col">
           <div className="w-full flex flex-row">
@@ -18,22 +18,13 @@ const Parcel = (props) => {
                 <div className="text-xs my-auto">{`${parcel.parcels.length} Parcels`}</div>
                 :
                 <>
-                <img className="h-4 w-4 my-auto" src={LocationIcon} />
+                <img className="h-4 w-4 my-auto" src={LocationIcon} alt="" />
                 <div className="text-xs ml-1 my-auto">{`${parcel.parcel ? parcel.parcel.x : '--'}, ${parcel.parcel? parcel.parcel.y : '--'}`}</div>
                 </>
               }
             </div>
           </div>
-          {/* <div>
-            <div className="text-gray-60 text-sm">{layerName}</div>
-          </div> */}
           <div className="w-full mt-auto mb-2">
-            {/* <div className="flex flex-row flex-wrap w-full justify-start">
-              {parcel.tags.map((tag, j) => (
-                <div key={`${parcel.title}-tag-${j}`} className={`rounded-md px-2 py-1 text-xs mr-2 cursor-default select-none bg-${tag.color}`}>{tag.name}</div>
-              ))}
-              <SlantButton onClick={() => {}} text="Claim All Profit" color="green" className="mt-4 bg-gray-500 hover:bg-green-50 text-green-50 hover:text-gray-500 w-full" />
-            </div> */}
             <div className="flex flex-row mt-2">
               {
                 parcel.updateOperator ?

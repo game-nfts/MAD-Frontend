@@ -1,5 +1,5 @@
 const endpoint = 'https://api.thegraph.com/subgraphs/name/decentraland/marketplace';
-const liteendoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/decentraland-lite';
+// const liteendoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/decentraland-lite';
 export const MAD_ADDRESS = '0x9D4DdDbe95192Ad8bE81ee88E021c9Eaf575BAf8';
 
 // Estate is a collection of parcels
@@ -130,25 +130,6 @@ export const getDecentralandEstates = async (estateContract, owner) => {
       }
     }
   });
-  // await fetch(endpoint, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     query: generateEstateIdQuery(owner),
-  //   }),
-  // }).then((res) => res.json()).then(async (result) => {
-  //   ret = [];
-  //   if(result.data.nfts) {
-  //     for(let nft of result.data.nfts) {
-  //       let tmp = await getEstateData(nft.tokenId);
-  //       tmp.name = nft.name;
-  //       tmp.updateOperator = await getEstateUpdateOperator(nft.tokenId); // True means we have delegation (show Cancel, Claim Profit), false means we don't have delegation (show Lease)
-  //       ret.push(tmp);
-  //     }
-  //   }
-  // });
 
   return ret;
 }
@@ -202,7 +183,7 @@ export const getDecentralandEstateData = async (estateId) => {
         name: null,
         image: result.data.nfts[0].image,
         parcels: result.data.nfts,
-      }
+      };
     } else {
       ret = {type: 'estate', image: '', name: null, parcels: null, tokenId: estateId};
     }
@@ -222,23 +203,8 @@ export const getDecentralandParcelUpdateOperator = async (parcelContract, parcel
       ret = false;
     } else {
       ret = res === MAD_ADDRESS;
-    }
-  })
-  // await fetch(liteendoint, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     query: generateParcelUpdateOperatorQuery(parcelId),
-  //   }),
-  // }).then((res) => res.json()).then(async (result) => {
-  //   if(result.data && result.data.lands) {
-  //     ret = result.data.lands[0].updateOperator === MAD_ADDRESS;
-  //   } else {
-  //     ret = false;
-  //   }
-  // });
+    };
+  });
 
   return ret;
 }
@@ -255,23 +221,7 @@ export const getDecentralandEstateUpdateOperator = async (estateContract, estate
     } else {
       ret = res === MAD_ADDRESS;
     }
-  })
-
-  // await fetch(liteendoint, {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     query: generateEstateUpdateOperatorQuery(estateId),
-  //   }),
-  // }).then((res) => res.json()).then(async (result) => {
-  //   if(result.data && result.data.estates) {
-  //     ret = result.data.estates[0].updateOperator === MAD_ADDRESS;
-  //   } else {
-  //     ret = false;
-  //   }
-  // });
+  });
 
   return ret;
 }

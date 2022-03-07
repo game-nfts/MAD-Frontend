@@ -1,7 +1,6 @@
 import Button from "./Button";
 import BatchAuctionImage from '../assets/auction_bg.svg';
 import EthIcon from '../assets/eth_logo.svg';
-import Hammer from '../assets/hammer.png';
 import Gavel from '../assets/GAVEL_1.gif';
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -29,9 +28,9 @@ export default function LandDelegationBatchAuction(props) {
         <div className="h-full w-full md:w-48/100">
           <div className="h-full relative flex flex-col w-full overflow-hidden md:overflow-visible my-8 md:my-auto">
             <div className="absolute top-0 right-0 left-0 right-0 z-10 h-full w-full">
-              <img className="h-full w-full object-cover md:object-fill" src={BatchAuctionImage}/>
+              <img className="h-full w-full object-cover md:object-fill" src={BatchAuctionImage} alt="" />
               <div className="absolute right-0 bottom-0 z-30">
-                <img className="h-48 w-48 hidden md:block xl:h-56 xl:w-56 md:ml-24 md:-mr-24 lg:ml-12 lg:-mr-12 lg:-mb-4 lg:mt-4" src={Gavel}/>
+                <img className="h-48 w-48 hidden md:block xl:h-56 xl:w-56 md:ml-24 md:-mr-24 lg:ml-12 lg:-mr-12 lg:-mb-4 lg:mt-4" src={Gavel} alt="" />
               </div>
             </div>
             <div className="z-20 m-auto">
@@ -41,7 +40,7 @@ export default function LandDelegationBatchAuction(props) {
                   <div className="mt-6 md:mt-2 lg:mt-4">
                     <div className="text-gray-80 mr-6 md:mr-0">Highest Bid</div>
                     <div className="flex flex-row my-2">
-                      <img className="h-8 mr-2 my-auto" src={EthIcon}/>
+                      <img className="h-8 mr-2 my-auto" src={EthIcon} alt="" />
                       <div className="text-4xl">{auctionBidEth}</div>
                     </div>
                     <div className="text-gray-80 text-sm">{ethToDollars}</div>

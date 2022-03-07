@@ -7,10 +7,10 @@ export default function Logo(props) {
   return (
     <>
       <div className="block sm:hidden">
-        <img className="w-full" src={GRIDS1SMALL}/>
+        <img className="w-full" src={GRIDS1SMALL} alt="" />
       </div>
       <div className="hidden sm:block">
-        <img className="w-full" src={GRIDS1}/>
+        <img className="w-full" src={GRIDS1} alt="" />
       </div>
     </>
   );

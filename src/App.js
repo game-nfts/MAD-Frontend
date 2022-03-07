@@ -54,7 +54,7 @@ function App() {
         handleCvContract(cvc);
       }
     })();
-  }, [active]);
+  }, [active, library]);
 
   // handle logic to recognize the connector currently being activated
   useEffect(() => {

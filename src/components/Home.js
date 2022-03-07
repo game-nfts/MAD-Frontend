@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../grid.css';
 import PastAds from "./PastAds";
-import ScrollDown from "./ScollDown";
-import BatchAuction from "./BatchAuction";
-import LandDelegation from "./LandDelegation";
 import Logo from './Logo';
 import LandDelegationBatchAuction from './LandDelegationBatchAuction';
 import RadicalMarket from './RadicalMarket';
@@ -15,7 +12,7 @@ function Home(props) {
 
   useEffect(() => {
     handleActivePage("/home");
-  }, []);
+  }, [handleActivePage]);
 
   return (
     <>

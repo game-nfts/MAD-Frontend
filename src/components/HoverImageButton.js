@@ -15,7 +15,7 @@ const HoverImageButton = (props) => {
     
     return(
         <>
-          <img onDragStart={onDragStart} src={src} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`${className}`} />
+          <img onDragStart={onDragStart} src={src} onClick={onClick} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} className={`${className}`} alt="" />
         </>
        );
 }

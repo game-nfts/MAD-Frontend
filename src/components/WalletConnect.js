@@ -10,7 +10,7 @@ function Provider(props) {
       <div className={`w-full p-3 flex justify-center items-center flex-col cursor-pointer rounded-none border border-gray-modal-border`} onClick={() => onClick()}>
         <div className={`transition-colors w-full flex flex-col justify-center items-center bg-gray-modal-bg hover:bg-gray-modal-hover rounded-md py-4 px-2 md:py-8 md:px-6 `}>
           <div className={`w-11 h-11 flex rounded-2xl overflow-visible shadow-none justify-center items-center`}>
-            <img className={`w-full h-full`} src={logo} />
+            <img className={`w-full h-full`} src={logo} alt=""/>
           </div>
           <div className={`w-full text-lg md:text-2xl font-bold mt-2 text-gray-modal-main`}>
             {name}
@@ -37,7 +37,7 @@ function WalletSelect(props) {
         onClose();
       }
     }
-  }, [active]);
+  }, [active, onClose]);
 
   const providers = [
     METAMASK, IMTOKEN, TORUS, GOOGLE
