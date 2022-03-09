@@ -1,6 +1,18 @@
 const endpoint = 'https://api.thegraph.com/subgraphs/name/decentraland/marketplace';
-// const liteendoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/decentraland-lite';
+const liteendoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/decentraland-lite';
 export const MAD_ADDRESS = '0x9D4DdDbe95192Ad8bE81ee88E021c9Eaf575BAf8';
+export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+
+function generateParcelUpdateOperatorIsMADQuery() {
+  const parcelQuery = `{
+        lands(where: { updateOperator: "${MAD_ADDRESS}" }) {
+            id
+            x
+            y
+          }
+    }`;
+  return parcelQuery;
+}
 
 // Estate is a collection of parcels
 function generateDecentralandEstateIdQuery(owner) {
@@ -78,6 +90,17 @@ function generateEstateUpdateOperatorQuery(estateId) {
   }`;
 
   return estateQuery;
+}
+
+function generateParcelOwnerQuery(tokenId) {
+  const query = `{
+        nfts(where: { tokenId: "${tokenId}" }) {
+            owner {
+                address
+            }
+        }
+    }`;
+  return query;
 }
 
 export const getDecentralandParcels = async (parcelContract, owner) => {
@@ -191,6 +214,82 @@ export const getDecentralandEstateData = async (estateId) => {
 
   return ret;
 }
+
+export async function getDecentralandParcelOwnerFromTokenId(tokenId) {
+  const raw = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: generateParcelOwnerQuery(tokenId),
+    }),
+  });
+  const json = await raw.json();
+  if (json.data.nfts.length === 0) return "";
+  return json.data.nfts[0].owner.address;
+};
+
+export async function getDecentralandParcelsWithMADAsUpdateOperator(estateContract) {
+  const raw = await fetch(liteendoint, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      query: generateParcelUpdateOperatorIsMADQuery(),
+    }),
+  });
+  const json = await raw.json();
+  const lands = json.data.lands;
+
+  for(let l in lands) {
+    lands[l] = await getDecentralandParcelData(lands[l].id);
+  }
+
+  let getDecentralandParcelOwnerFromTokenIdPromises = [];
+  let dcl_getEstateTokenIdPromises = [];
+  for (const land of lands) {
+    const tokenId = land.tokenId;
+    const getDecentralandParcelOwnerFromTokenIdPromise =
+      getDecentralandParcelOwnerFromTokenId(tokenId);
+    getDecentralandParcelOwnerFromTokenIdPromises.push(
+      getDecentralandParcelOwnerFromTokenIdPromise
+    );
+    const dcl_getEstateTokenIdPromise = await estateContract.landIdEstate(tokenId);
+    dcl_getEstateTokenIdPromises.push(dcl_getEstateTokenIdPromise);
+  }
+  const ownerAddresses = await Promise.all(
+    getDecentralandParcelOwnerFromTokenIdPromises
+  );
+  let estateIds = await Promise.all(dcl_getEstateTokenIdPromises);
+  estateIds = estateIds.map((v) => v.toString());
+
+  let dcl_getEstateUpdateOperatorPromises = [];
+  for (const estateId of estateIds) {
+    const dcl_getEstateUpdateOperatorPromise =
+      await estateContract.updateOperator(estateId);
+    dcl_getEstateUpdateOperatorPromises.push(
+      dcl_getEstateUpdateOperatorPromise
+    );
+  }
+  let estateUpdateOperators = await Promise.all(
+    dcl_getEstateUpdateOperatorPromises
+  );
+
+  let parcel_owner_array = [];
+  for (let i = 0; i < ownerAddresses.length; ++i) {
+    if (
+      estateUpdateOperators[i] !== ZERO_ADDRESS &&
+      estateUpdateOperators[i] !== MAD_ADDRESS
+    )
+      continue; // Filters out lands that belong in an estate with a different estate operator
+    const parcel = lands[i];
+    parcel.owner = ownerAddresses[i];
+    parcel_owner_array.push(parcel);
+  }
+  return parcel_owner_array;
+};
 
 export const getDecentralandParcelUpdateOperator = async (parcelContract, parcelId) => {
   if(!parcelId || !parcelContract) {

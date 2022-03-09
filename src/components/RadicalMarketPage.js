@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import _ from "lodash";
 import Skyline from "../assets/LD-black_3.gif";
 import Sidebar from "./Sidebar";
 import Search from "./Search";
@@ -6,6 +7,8 @@ import Dropdown from "./Dropdown";
 import { ReactComponent as ArrowDownIcon } from "../assets/arrow_down.svg";
 import Menu from "../assets/menu.svg";
 import ParcelGroup from "./ParcelGroup";
+import { useWeb3React } from "@web3-react/core";
+import { getDecentralandParcelsWithMADAsUpdateOperator, MAD_ADDRESS } from "../helpers/graphql";
 
 const TestNavData = [
   {
@@ -63,9 +66,128 @@ const dropdownlist = [
   },
 ];
 
-function RadicalMarketPage() {
+function RadicalMarketPage(props) {
+  const { handleActivePage, estateContract, parcelContract, cvContract } = props;
+
+  const [loading, handleLoading] = useState(false);
+  const [error, handleError] = useState(false);
   const [data, setData] = useState(TestNavData);
   const [query, setQuery] = useState("");
+  const [layer, handleLayer] = useState(0); // Default to decentraland for now
+  const [activeParcels, handleActiveParcels] = useState([]);
+  const [dParcels, handleDParcels] = useState([]);
+  const [cParcels, handleCParcels] = useState([]);
+
+  const { account, active } = useWeb3React();
+
+  useEffect(() => {
+    handleActivePage("/radicalmarket");
+  }, [handleActivePage]);
+
+  useEffect(() => {
+    switch(layer) {
+      case 0:
+        handleActiveParcels(dParcels);
+        break;
+      case 1:
+        handleActiveParcels(cParcels);
+        break;
+      default:
+        break;
+    }
+  }, [layer, dParcels, cParcels]);
+
+  useEffect(() => {
+    (async () => {
+      // When we re-enable CV, uncomment this.
+      handleDParcels([]);
+      handleCParcels([]);
+
+      if(account && active && estateContract && parcelContract && cvContract) {
+        if(layer === 0) {
+          // Decentraland
+          handleError(false);
+          handleLoading(true);
+          let parcels = await getDecentralandParcelsWithMADAsUpdateOperator(estateContract);
+
+          // handleDParcels(estates);
+          handleActiveParcels(parcels);
+          handleLoading(false);
+        } else if(layer === 1) {
+          // Cryptovoxels
+          handleError(false);
+          handleLoading(true);
+
+          try {
+            let balance = await cvContract.balanceOf(account);
+            if(!balance) {
+              handleCParcels([]);
+            } else {
+              let tcp = [];
+              for(let i = 0; i < balance; i++) {
+                let parcelId = await cvContract.tokenOfOwnerByIndex(account, i);
+                let id = parcelId.toString();
+                let data = await fetch(`https://www.cryptovoxels.com/p/${id}`, {
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                }).then((res) => res.json());
+                let extradata = await fetch(`https://www.cryptovoxels.com/grid/parcels/${id}`, {
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                }).then((res) => res.json());
+                let td = {
+                  type: 'parcel',
+                  image: data.image,
+                  name: data.name,
+                  parcel: {x: Math.ceil((extradata.parcel.x1 + extradata.parcel.x2) / 2), y: Math.ceil((extradata.parcel.z1 + extradata.parcel.z2) / 2)},
+                  tokenId: id,
+                  updateOperator: _.includes(extradata.contributors, MAD_ADDRESS),
+                }
+                tcp.push(td);
+              }
+              handleCParcels(tcp);
+              handleActiveParcels(tcp);
+            }
+          } catch(err) {
+            console.log(err);
+            handleError(true);
+          }
+
+          handleLoading(false);
+        }
+      } else {
+        handleError(true);
+      }
+    })();
+  }, [account, active, estateContract, parcelContract, layer, cvContract]);
+
+  const lease = (obj) => {
+
+  }
+
+  const cancelLease = (obj) => {
+
+  }
+
+  const claimProfit = (obj) => {
+
+  }
+
+  const getLayerName = (layerId) => {
+    switch(layerId) {
+      case 0:
+        return 'Decentraland';
+      case 1:
+        return 'CryptoVoxels';
+      case 2:
+        return 'The Sandbox';
+      default:
+        return '';
+    }
+  }
+
   return (
     <div
       className="w-full flex flex-col text-gray-95"
@@ -89,36 +211,38 @@ function RadicalMarketPage() {
         <div className="w-56">
           <Sidebar data={data} setData={setData} />
         </div>
-        <div className="w-2/3 flex flex-row">
-          <div className="w-2/3 ">
-            <Search query={query} onSearch={setQuery} />
-          </div>
-          <div className="w-2/9 ml-auto">
-            <Dropdown
-              menus={dropdownlist}
-              children={
-                <div
-                  className=" font-commuter text-xl inline-flex justify-center w-full px-4 py-2 bg-transparent font-normal items-center hover:bg-white rounded-md hover:text-gray-500 cursor-pointer text-gray-100"
-                  id="menu-button"
-                  aria-expanded="true"
-                  aria-haspopup="true"
-                >
-                  Recently Listed
-                  <ArrowDownIcon className="ml-4" />
-                </div>
-              }
-            />
+        <div className="w-2/3 flex flex-col">
+          <div className="w-full flex flex-row">
+            <div className="w-2/3 ">
+              <Search query={query} onSearch={setQuery} />
+            </div>
+            <div className="w-2/9 ml-auto">
+              <Dropdown
+                menus={dropdownlist}
+                children={
+                  <div
+                    className=" font-commuter text-xl inline-flex justify-center w-full px-4 py-2 bg-transparent font-normal items-center hover:bg-white rounded-md hover:text-gray-500 cursor-pointer text-gray-100"
+                    id="menu-button"
+                    aria-expanded="true"
+                    aria-haspopup="true"
+                  >
+                    Recently Listed
+                    <ArrowDownIcon className="ml-4" />
+                  </div>
+                }
+              />
+            </div>
           </div>
 
           {/* <-- need to be done after query data --> */}
           <div className="mt-7">
-            {/* <ParcelGroup
+            <ParcelGroup
               parcels={activeParcels}
               layerName={getLayerName(0)}
               leaseCallback={lease}
               cancelCallback={cancelLease}
               claimProfitCallback={claimProfit}
-            /> */}
+            />
           </div>
         </div>
       </div>

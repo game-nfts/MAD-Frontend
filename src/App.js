@@ -102,7 +102,7 @@ function App() {
               <Route exact path="/lease" element={<LeaseEstates handleActivePage={handleActivePage} estateContract={estateContract} parcelContract={parcelContract} estateInstance={estateInstance} parcelInstance={parcelInstance} cvContract={cvContract} />} />
               <Route exact path="/stake" element={<ComingSoon title="LIQUIDITY MINING" />} /> {/* <LiquidityMining /> */}
               <Route exact path="/docs" element={<ComingSoon title="DOCS" />} />
-              <Route exact path="/radicalmarket" element={<RadicalMarketPage title="RADICAL MARKET" />} />
+              <Route exact path="/radicalmarket" element={<RadicalMarketPage title="RADICAL MARKET" handleActivePage={handleActivePage} estateContract={estateContract} parcelContract={parcelContract} estateInstance={estateInstance} parcelInstance={parcelInstance} cvContract={cvContract} />} />
               <Route exact path="/radicalmarket/:id" element={<RadicalMarketDetails />} />
             </>
           </Routes>
