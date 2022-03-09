@@ -14,7 +14,8 @@ import { ethers } from 'ethers';
 import parcels_abi from './artifacts/ParcelABI.json';
 import estate_abi from './artifacts/EstateABI.json';
 import cv_abi from './artifacts/CryptoVoxelsABI.json';
-import RadicalMarketUpdate from './components/RadicalMarketUpdate';
+import RadicalMarketPage from './components/RadicalMarketPage';
+import RadicalMarketDetails from './components/RadicalMarketDetails';
 
 function App() {
   const [estateContract, handleEstateContract] = useState(null);
@@ -24,7 +25,7 @@ function App() {
   const [cvContract, handleCvContract] = useState(null);
   const [loginType, handleLoginType] = useStateWithSessionStorage('loginType', null);
   const [ethAlias, handleEthAlias] = useState(null);
-	const [ethAvatar, handleEthAvatar] = useState(null);
+  const [ethAvatar, handleEthAvatar] = useState(null);
   const [showWalletSelect, handleShowWalletSelect] = useState(false);
   const [activePage, handleActivePage] = useState("/home");
   const [activatingConnector, setActivatingConnector] = useState();
@@ -39,7 +40,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      if(active) {
+      if (active) {
         // Decentraland contracts
         const ec = new ethers.Contract('0x959e104E1a4dB6317fA58F8295F586e1A978c297', estate_abi, library);
         const pc = new ethers.Contract('0xF87E31492Faf9A91B02Ee0dEAAd50d51d56D5d4d', parcels_abi, library);
@@ -65,43 +66,44 @@ function App() {
   }, [activatingConnector, connector])
 
   useEffect(() => {
-		(async () => {
-			if (!!account && !!library) {
-				try{
-					let alias = await library.lookupAddress(account);
-					if(alias) {
-						handleEthAlias(alias);
+    (async () => {
+      if (!!account && !!library) {
+        try {
+          let alias = await library.lookupAddress(account);
+          if (alias) {
+            handleEthAlias(alias);
 
-						const resolver = await library.getResolver(alias);
-						const avatar = await resolver.getText("avatar");
-						handleEthAvatar(avatar);
-					} else {
-						handleEthAvatar(null);
-						handleEthAlias(null);
-					}
-				}catch(err){
-					handleEthAvatar(null);
-					handleEthAlias(null);
-				}
-			}
-		})();
-	}, [account, library]);
+            const resolver = await library.getResolver(alias);
+            const avatar = await resolver.getText("avatar");
+            handleEthAvatar(avatar);
+          } else {
+            handleEthAvatar(null);
+            handleEthAlias(null);
+          }
+        } catch (err) {
+          handleEthAvatar(null);
+          handleEthAlias(null);
+        }
+      }
+    })();
+  }, [account, library]);
 
   document.body.classList.add('bg-gray-500');
 
   return (
     <>
-			<Router>
-				<div className={`flex flex-col relative min-h-screen max-h-screen bg-gray-500 font-nexa`}>
-					<Navbar accountData={{ethAlias: ethAlias, ethAvatar: ethAvatar}} handleLoginType={handleLoginType} activePage={activePage} handleShowWalletSelect={handleShowWalletSelect} />
-					<Routes>
-						<>
-							<Route exact path="/" element={<Home handleActivePage={handleActivePage} />} />
+      <Router>
+        <div className={`flex flex-col relative min-h-screen max-h-screen bg-gray-500 font-nexa`}>
+          <Navbar accountData={{ ethAlias: ethAlias, ethAvatar: ethAvatar }} handleLoginType={handleLoginType} activePage={activePage} handleShowWalletSelect={handleShowWalletSelect} />
+          <Routes>
+            <>
+              <Route exact path="/" element={<Home handleActivePage={handleActivePage} />} />
               <Route exact path="/auction" element={<ComingSoon title="AUCTION" />} />
               <Route exact path="/lease" element={<LeaseEstates handleActivePage={handleActivePage} estateContract={estateContract} parcelContract={parcelContract} estateInstance={estateInstance} parcelInstance={parcelInstance} cvContract={cvContract} />} />
-              <Route exact path="/stake" element={<ComingSoon title="LIQUIDITY MINING" />} /> {/* <LiquidityMining /> */ }
+              <Route exact path="/stake" element={<ComingSoon title="LIQUIDITY MINING" />} /> {/* <LiquidityMining /> */}
               <Route exact path="/docs" element={<ComingSoon title="DOCS" />} />
-              <Route exact path="/market" element={<RadicalMarketUpdate title="RADICAL MARKET" />} />
+              <Route exact path="/radicalmarket" element={<RadicalMarketPage title="RADICAL MARKET" />} />
+              <Route exact path="/radicalmarket/:id" element={<RadicalMarketDetails />} />
             </>
           </Routes>
           <Footer activePage={activePage} />
@@ -109,11 +111,11 @@ function App() {
       </Router>
       {showWalletSelect &&
         <WalletSelect handleLoginType={handleLoginType} onClose={() => {
-          if(!account) {
+          if (!account) {
             handleLoginType(null);
           }
           handleShowWalletSelect(false);
-        }}/>
+        }} />
       }
     </>
   );

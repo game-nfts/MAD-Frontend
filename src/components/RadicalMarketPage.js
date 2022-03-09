@@ -63,13 +63,12 @@ const dropdownlist = [
   },
 ];
 
-function RadicalMarketUpdate() {
+function RadicalMarketPage() {
   const [data, setData] = useState(TestNavData);
   const [query, setQuery] = useState("");
   return (
     <div
       className="w-full flex flex-col text-gray-95"
-      onDragStart={(e) => e.preventDefault()}
     >
       <div className="w-full flex flex-col pt-20 px-10 bg-gray-490">
         <div className="w-full flex flex-col-reverse md:flex-row max-w-7xl mx-auto my-5 xs:my-10 md:my-20 justify-center">
@@ -90,11 +89,11 @@ function RadicalMarketUpdate() {
         <div className="w-56">
           <Sidebar data={data} setData={setData} />
         </div>
-        <div className="w-2/3 flex flex-row justify-between">
+        <div className="w-2/3 flex flex-row">
           <div className="w-2/3 ">
             <Search query={query} onSearch={setQuery} />
           </div>
-          <div className="w-2/9">
+          <div className="w-2/9 ml-auto">
             <Dropdown
               menus={dropdownlist}
               children={
@@ -127,4 +126,4 @@ function RadicalMarketUpdate() {
   );
 }
 
-export default RadicalMarketUpdate;
+export default RadicalMarketPage;
