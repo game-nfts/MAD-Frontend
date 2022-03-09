@@ -4,19 +4,9 @@ import { ReactComponent as ArrowRight } from "../assets/arrow_short.svg";
 function Sidebar({ data, setData }) {
   const [showList, setShowList] = useState(Array(data.length).fill(false));
 
-  const onClickParent = (e, parent_index) => {
-    setData((prevData) => {
-      const data = [...prevData];
-      data[parent_index].current = e.target.checked;
-      data[parent_index].children.map((item) => {
-        item.current = e.target.checked;
-      });
-      return data;
-    });
-  };
-
-  const onClickChildren = (e, parent_index, child_index) => {
-    data[parent_index].children[child_index].current = e.target.checked;
+  const onClickChildren = (parent_index, child_index) => {
+    data[parent_index].children[child_index].current =
+      !data[parent_index].children[child_index].current;
     setData([...data]);
   };
 
@@ -68,18 +58,18 @@ function Sidebar({ data, setData }) {
                     {showList[item_idx] && (
                       <div className="space-y-6">
                         {item.children.map((subItem, subitem_idx) => (
-                          <button
+                          <div
                             key={"tree-item-" + subitem_idx}
                             className="group flex items-center font-light text-sm mx-7 text-gray-600"
+                            onClick={() =>
+                              onClickChildren(item_idx, subitem_idx)
+                            }
                           >
                             <input
                               type="checkbox"
                               name="Tree-sub-item"
                               checked={subItem.current}
-                              onChange={(e) =>
-                                onClickChildren(e, item_idx, subitem_idx)
-                              }
-                              className="opacity-0 absolute w-3.5 h-3.5 hover:cursor-pointer"
+                              className="opacity-0 absolute w-3.5 h-3.5 cursor-pointer"
                             />
                             <div className="border-2 rounded-sm border-white w-3.5 h-3.5 flex flex-shrink-0 justify-center items-center mr-2.5">
                               <svg
@@ -88,6 +78,7 @@ function Sidebar({ data, setData }) {
                                 viewBox="0 0 8 7"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
+                                className="hidden"
                               >
                                 <path
                                   d="M2.9958 3.55606L1.6998 2.28506L0.299805 3.71506L3.0038 6.36206L7.7028 1.71106L6.2968 0.289062L2.9958 3.55606Z"
@@ -96,7 +87,7 @@ function Sidebar({ data, setData }) {
                               </svg>
                             </div>
                             <p className=" text-p6">{subItem.name}</p>
-                          </button>
+                          </div>
                         ))}
                       </div>
                     )}
