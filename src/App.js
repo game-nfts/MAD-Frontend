@@ -14,6 +14,7 @@ import { ethers } from 'ethers';
 import parcels_abi from './artifacts/ParcelABI.json';
 import estate_abi from './artifacts/EstateABI.json';
 import cv_abi from './artifacts/CryptoVoxelsABI.json';
+import RadicalMarketUpdate from './components/RadicalMarketUpdate';
 
 function App() {
   const [estateContract, handleEstateContract] = useState(null);
@@ -100,6 +101,7 @@ function App() {
               <Route exact path="/lease" element={<LeaseEstates handleActivePage={handleActivePage} estateContract={estateContract} parcelContract={parcelContract} estateInstance={estateInstance} parcelInstance={parcelInstance} cvContract={cvContract} />} />
               <Route exact path="/stake" element={<ComingSoon title="LIQUIDITY MINING" />} /> {/* <LiquidityMining /> */ }
               <Route exact path="/docs" element={<ComingSoon title="DOCS" />} />
+              <Route exact path="/market" element={<RadicalMarketUpdate title="RADICAL MARKET" />} />
             </>
           </Routes>
           <Footer activePage={activePage} />

@@ -23,11 +23,7 @@ const NavbarLinks = (props) => {
             LEASE MY ESTATES
           </div>
           <div onClick={() => {
-              try {
-                document.getElementById('radical-market-container').scrollIntoView({behavior: 'smooth'});
-              } catch(err) {
-                navigate('../', {replace: true});
-              }
+              navigate('../market', {replace: true});
             }} className={`cursor-pointer select-none my-auto text-10 xs:text-15 block lg:mx-5 p-2 hover:bg-white rounded-md hover:text-gray-500 ${activePage === '/lease' ? 'text-white' : 'text-white'}`}>
             RADICAL MARKET
           </div>
