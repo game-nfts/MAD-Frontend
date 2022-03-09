@@ -60,7 +60,7 @@ function Sidebar({ data, setData }) {
                       )}
                       <p>{item.name}</p>
                       <ArrowRight
-                        className={`transition-transform duration-500 ml-auto ${
+                        className={`transform duration-100 ml-auto ${
                           showList[item_idx] ? "rotate-90" : "rotate-0"
                         }`}
                       />
