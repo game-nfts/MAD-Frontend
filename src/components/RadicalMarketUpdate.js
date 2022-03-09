@@ -5,6 +5,7 @@ import Search from "./Search";
 import Dropdown from "./Dropdown";
 import { ReactComponent as ArrowDownIcon } from "../assets/arrow_down.svg";
 import Menu from "../assets/menu.svg";
+import ParcelGroup from "./ParcelGroup";
 
 const TestNavData = [
   {
@@ -108,6 +109,17 @@ function RadicalMarketUpdate() {
                 </div>
               }
             />
+          </div>
+
+          {/* <-- need to be done after query data --> */}
+          <div className="mt-7">
+            {/* <ParcelGroup
+              parcels={activeParcels}
+              layerName={getLayerName(0)}
+              leaseCallback={lease}
+              cancelCallback={cancelLease}
+              claimProfitCallback={claimProfit}
+            /> */}
           </div>
         </div>
       </div>
