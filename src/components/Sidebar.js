@@ -26,12 +26,13 @@ function Sidebar({ data, setData }) {
   };
 
   return (
-    <div className="flex flex-col flex-grow border-gray-30 rounded-2.5xl w-fit px-4 pt-4 pb-4 overflow-y-auto font-lato border-r">
+    <div className="flex flex-col flex-grow border-gray-30 rounded-2.5xl w-fit pl-4 pr-8 py-4 overflow-y-auto font-lato border-r">
       <div className="flex-grow flex flex-col">
         <nav className="flex-1 space-y-6" aria-label="Sidebar">
           {data.map((item, item_idx) =>
             !item.children.length ? (
-              <div key={item.name}>
+              <div key={item.name} className="cursor-pointer">
+                {item.icon && <img src={item.icon} alt={item.name} />}
                 <a
                   className={`font-commuter text-xl hover:cursor-pointer ${
                     item.disabled ? "text-gray-60" : ""
@@ -41,23 +42,28 @@ function Sidebar({ data, setData }) {
                 </a>
               </div>
             ) : (
-              <div key={item.name}>
+              <div key={item.name} className="cursor-pointer">
                 {
                   <>
                     <button
-                      className={`flex min-w-full items-center font-commuter text-xl hover:cursor-pointer mb-6 ${
+                      className={`flex min-w-full items-center font-commuter text-xl mb-6 ${
                         item.disabled ? "text-gray-60" : ""
                       }`}
                       onClick={() => onHandleSidebar(item_idx)}
                     >
+                      {item.icon && (
+                        <img
+                          src={item.icon}
+                          alt={item.name}
+                          className="mr-1 w-5 h-5"
+                        />
+                      )}
                       <p>{item.name}</p>
-                      <div
-                        className={`transition-transform duration-500 ml-auto mr-10 ${
+                      <ArrowRight
+                        className={`transition-transform duration-500 ml-auto ${
                           showList[item_idx] ? "rotate-90" : "rotate-0"
                         }`}
-                      >
-                        <ArrowRight />
-                      </div>
+                      />
                     </button>
                     {showList[item_idx] && (
                       <div className="space-y-6">
@@ -89,9 +95,7 @@ function Sidebar({ data, setData }) {
                                 />
                               </svg>
                             </div>
-                            <p className=" text-p6">
-                              {subItem.name}
-                            </p>
+                            <p className=" text-p6">{subItem.name}</p>
                           </button>
                         ))}
                       </div>

@@ -25,11 +25,11 @@ export const DropdownWrapper = ({ header, children }) => {
   );
 };
 
-const Dropdown = ({ Dropdowns, children }) => {
+const Dropdown = ({ menus, children }) => {
   return (
     <DropdownWrapper header={children}>
       <>
-        {Dropdowns.map((el, index) => (
+        {menus.map((el, index) => (
           <DropdownItem key={`Dropdown-item-${index}`} {...el} />
         ))}
       </>

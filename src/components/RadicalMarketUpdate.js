@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 import Search from "./Search";
 import Dropdown from "./Dropdown";
 import { ReactComponent as ArrowDownIcon } from "../assets/arrow_down.svg";
+import Menu from "../assets/menu.svg";
 
 const TestNavData = [
   {
@@ -29,6 +30,7 @@ const TestNavData = [
       { name: "Angomeda", href: "#", current: false },
       { name: "Scarcity", href: "#", current: false },
     ],
+    icon: Menu,
     value: 8,
     disabled: false,
   },
