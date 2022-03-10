@@ -18,6 +18,8 @@
     "autoprefixer": "^9.8.8",
     "craco": "^0.0.3",
     "ethers": "^5.5.4",
+    "highcharts": "^10.0.0",
+    "highcharts-react-official": "^3.1.0",
     "lodash": "^4.17.21",
     "postcss": "^7.0.39",
     "react": "^17.0.2",

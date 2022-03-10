@@ -152,6 +152,11 @@ function RadicalMarketDetails() {
                   alt="price-tag"
                 />
               </div>
+
+              {/* This is for Chart implementation */}
+              {/* <div className="flex justify-around flex-wrap w-full">
+                <Chart options={allOptions} className="my-4 w-full sm:w-1/3 p-4"/>
+              </div> */}
             </div>
           </div>
         </div>

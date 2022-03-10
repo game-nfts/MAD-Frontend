@@ -18,16 +18,18 @@ function RMPrice() {
         <p className="lg:text-2xl text-xl font-light">(105usd)</p>
       </div>
       <p className="text-gray-85 lg:text-3xl text-base mb-5">Stake Now:</p>
-      <div className="lg:flex block text-gray-110 items-center lg:mb-11 mb-3">
-        <div className="flex">
-          <img src={EthIcon} alt="eth-icon" className="mr-4 md:w-4" />
+      <div className="lg:flex md:block flex text-gray-110 items-center lg:mb-2 mb-3 flex-wrap space-y-5">
+        <div className="flex items-center">
+          <img
+            src={EthIcon}
+            alt="eth-icon"
+            className="mr-4 md:w-4 sm:w-7 sm:h-11"
+          />
           <input
             className="lg:w-40 w-24 lg:h-16 h-8 bg-transparent border border-white border-opacity-30 rounded-md text-2xl px-1"
             type="text"
           />
-          <span className="ml-2.5 lg:text-xl text-sm mt-auto lg:mt-0">
-            --Days
-          </span>
+          <span className="ml-2.5 lg:text-xl text-sm mt-auto">- -Days</span>
         </div>
         <Button
           text="Stake and Bid"
