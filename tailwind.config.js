@@ -28,6 +28,7 @@ module.exports = {
         90: "#E5E5E5",
         95: "#ECECEC",
         100: "#ECD4EB",
+        105: "#E8E8E8",
         110: "#E2E2E2",
         490: "#232323",
         500: "#171617",
@@ -135,6 +136,7 @@ module.exports = {
       "7xl": "5rem",
       15: "15px",
       12: "12px",
+      8: "8px",
     },
     minHeight: {
       72: "18rem",

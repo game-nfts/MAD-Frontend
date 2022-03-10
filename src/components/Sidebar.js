@@ -17,27 +17,31 @@ function Sidebar({ data, setData }) {
 
   return (
     <div className="flex flex-col flex-grow border-gray-30 rounded-2.5xl w-fit pl-4 pr-8 py-4 overflow-y-auto font-lato border-r">
-      <div className="flex-grow flex flex-col">
+      <div className="font-commuter flex-grow flex flex-col">
         <nav className="flex-1 space-y-6" aria-label="Sidebar">
+          <div className="text-2xl text-gray-95 hover:cursor-pointer font-semibold">
+            Platforms
+          </div>
+
           {data.map((item, item_idx) =>
             !item.children.length ? (
-              <div key={item.name} className="cursor-pointer">
+              <div key={item.name}>
                 {item.icon && <img src={item.icon} alt={item.name} />}
                 <a
-                  className={`font-commuter text-xl hover:cursor-pointer ${
-                    item.disabled ? "text-gray-60" : ""
+                  className={`font-normal text-xl hover:cursor-pointer ${
+                    item.disabled ? "text-gray-60 cursor-default" : ""
                   }`}
                 >
                   {item.name}
                 </a>
               </div>
             ) : (
-              <div key={item.name} className="cursor-pointer">
+              <div key={item.name}>
                 {
                   <>
                     <button
-                      className={`flex min-w-full items-center font-commuter text-xl mb-6 ${
-                        item.disabled ? "text-gray-60" : ""
+                      className={`flex min-w-full items-center font-normal text-xl mb-6 ${
+                        item.disabled ? "text-gray-60 cursor-default" : ""
                       }`}
                       onClick={() => onHandleSidebar(item_idx)}
                     >
@@ -60,7 +64,7 @@ function Sidebar({ data, setData }) {
                         {item.children.map((subItem, subitem_idx) => (
                           <div
                             key={"tree-item-" + subitem_idx}
-                            className="group flex items-center font-light text-sm mx-7 text-gray-600"
+                            className="group flex items-center font-light text-sm mx-7 text-gray-600 cursor-pointer"
                             onClick={() =>
                               onClickChildren(item_idx, subitem_idx)
                             }

@@ -1,12 +1,37 @@
-import Parcel from './Parcel';
+import Parcel from "./Parcel";
+import RadicalMarketParcel from "./RadicalMarketParcel";
 
 const ParcelGroup = (props) => {
+  const {
+    parcels,
+    layerName,
+    leaseCallback,
+    cancelCallback,
+    claimProfitCallback,
+    radicalMarket,
+  } = props;
 
-  const { parcels, layerName, leaseCallback, cancelCallback, claimProfitCallback } = props;
-
-  const itemCards = parcels.map((item, i) => (
-    <Parcel parcel={item} i={i} layerName={layerName} leaseCallback={leaseCallback} cancelCallback={cancelCallback} claimProfitCallback={claimProfitCallback} />
-  ));
+  const itemCards = parcels.map((item, i) =>
+    radicalMarket ? (
+      <RadicalMarketParcel
+        parcel={item}
+        i={i}
+        layerName={layerName}
+        leaseCallback={leaseCallback}
+        cancelCallback={cancelCallback}
+        claimProfitCallback={claimProfitCallback}
+      />
+    ) : (
+      <Parcel
+        parcel={item}
+        i={i}
+        layerName={layerName}
+        leaseCallback={leaseCallback}
+        cancelCallback={cancelCallback}
+        claimProfitCallback={claimProfitCallback}
+      />
+    )
+  );
 
   return (
     <>
@@ -21,6 +46,6 @@ const ParcelGroup = (props) => {
       </div>
     </>
   );
-}
+};
 
 export default ParcelGroup;
