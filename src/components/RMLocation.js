@@ -10,12 +10,12 @@ function RMLocation() {
       </div>
       <div className="flex items-center justify-start h-14 px-9 bg-gray-25">
         <img src={Property} alt="property" className=" mr-3" />
-        <p className="text-xl text-white font-semibold text-left">
+        <p className="lg:text-xl text-sm text-white font-semibold text-left">
           Description
         </p>
       </div>
       <div className="flex px-9 py-6 justify-center items-center">
-        <p className=" font-normal text-lg">
+        <p className=" font-normal lg:text-lg text-xs">
           156m² parcel near Neutron in Neutron, 726m from the origin, with a 7m
           build height and floor is at 0m elevation
         </p>
@@ -23,7 +23,9 @@ function RMLocation() {
       <div className="flex items-center justify-start h-14 px-9 bg-gray-25">
         <div className="flex ">
           <img src={Property} alt="property" className=" mr-3" />
-          <p className="text-xl text-white font-semibold text-left">Property</p>
+          <p className="lg:text-xl text-sm text-white font-semibold text-left">
+            Property
+          </p>
         </div>
       </div>
       <div className="flex px-9 py-6 justify-start items-center space-x-8">

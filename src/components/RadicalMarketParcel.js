@@ -1,5 +1,6 @@
 import LocationIcon from "../assets/location.svg";
 import Button from "./Button";
+import { useNavigate } from "react-router-dom";
 
 const RadicalMarketParcel = (props) => {
   const {
@@ -11,6 +12,7 @@ const RadicalMarketParcel = (props) => {
     claimProfitCallback,
     radicalMarket,
   } = props;
+  const navigate = useNavigate();
 
   return (
     <div
@@ -44,6 +46,11 @@ const RadicalMarketParcel = (props) => {
               </div>
             </div>
             <Button
+              onClick={() => {
+                navigate(`../radicalmarket/${parcel.tokenId}`, {
+                  replace: true,
+                });
+              }}
               className="mt-4 bg-gray-525 hover:bg-black text-white w-max ml-auto hover:bg-black"
               text="Bid Now"
             />
