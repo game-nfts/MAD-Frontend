@@ -19,17 +19,17 @@ function Sidebar({ data, setData }) {
     <div className="flex flex-col flex-grow border-gray-30 rounded-2.5xl w-fit pl-4 pr-8 py-4 overflow-y-auto font-lato border-r">
       <div className="font-commuter flex-grow flex flex-col">
         <nav className="flex-1 space-y-6" aria-label="Sidebar">
-          <div className="text-2xl text-gray-95 hover:cursor-pointer font-semibold">
-            Platforms
-          </div>
+          <div className="text-2xl text-gray-95 font-semibold">Platforms</div>
 
           {data.map((item, item_idx) =>
             !item.children.length ? (
               <div key={item.name}>
                 {item.icon && <img src={item.icon} alt={item.name} />}
                 <a
-                  className={`font-normal text-xl hover:cursor-pointer ${
-                    item.disabled ? "text-gray-60 cursor-default" : ""
+                  className={`font-normal text-xl ${
+                    item.disabled
+                      ? "text-gray-60 cursor-default"
+                      : "cursor-pointer "
                   }`}
                 >
                   {item.name}

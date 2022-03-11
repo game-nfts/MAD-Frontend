@@ -34,7 +34,7 @@ function RadicalMarketDetails() {
                   <p className="text-green-30 lg:text-2xl text-base mb-1 text-left md:hidden block">
                     Cryptovoxels
                   </p>
-                  <div className="flex mb-4 md:block ">
+                  <div className="flex md:mb-0 mb-4 md:block ">
                     <p className="text-white lg:text-4xl text-2xl mr-3 md:hidden block">
                       312 Neutron Tower
                     </p>
@@ -63,7 +63,7 @@ function RadicalMarketDetails() {
                   <RMPrice />
                 </div>
               </div>
-              <div className="mt-28">
+              <div className="lg:mt-28 mt-8">
                 <div className="flex items-center">
                   <span className="mr-7 text-green-30 lg:text-4xl text-base">
                     OFFERS
