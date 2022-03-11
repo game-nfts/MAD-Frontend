@@ -25,9 +25,9 @@ export default function LandDelegationBatchAuction(props) {
   return (
     <>
 			<div className="flex flex-col-reverse md:flex-row md:justify-between">
-        <div className="h-full w-full md:w-48/100">
+        <div className="h-auto w-full md:w-48/100">
           <div className="h-full relative flex flex-col w-full overflow-hidden md:overflow-visible my-8 md:my-auto">
-            <div className="absolute top-0 right-0 left-0 right-0 z-10 h-full w-full">
+            <div className="absolute top-0 right-0 left-0 z-10 h-full w-full">
               <img className="h-full w-full object-cover md:object-fill" src={BatchAuctionImage} alt="" />
               <div className="absolute right-0 bottom-0 z-30">
                 <img className="h-48 w-48 hidden md:block xl:h-56 xl:w-56 md:ml-24 md:-mr-24 lg:ml-12 lg:-mr-12 lg:-mb-4 lg:mt-4" src={Gavel} alt="" />
