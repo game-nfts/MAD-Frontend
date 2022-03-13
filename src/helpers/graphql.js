@@ -1,3 +1,5 @@
+import { BigNumber } from "ethers";
+
 const endpoint = 'https://api.thegraph.com/subgraphs/name/decentraland/marketplace';
 const radicalmarketendpoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/radical-market';
 const liteendoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/decentraland-lite';
@@ -351,6 +353,7 @@ export const getOffers = async (tokenId) => {
   }).then((res) => res.json()).then(async (result) => {
     if(result?.data?.bidEvents) {
       ret = result.data.bidEvents;
+      ret.sort((a, b) => (BigNumber.from(a.pricePerDay).lt(BigNumber.from(b.pricePerDay)) ? 1 : (BigNumber.from(b.pricePerDay).lt(BigNumber.from(a.pricePerDay))) ? -1 : 0));
     }
   });
 

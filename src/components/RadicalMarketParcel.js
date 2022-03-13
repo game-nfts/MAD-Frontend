@@ -19,11 +19,13 @@ const RadicalMarketParcel = (props) => {
       key={`op-${i}`}
       className="font-commuter w-72 mx-6 bg-gray-bg rounded-sm flex flex-col mt-10 shadow-xl"
     >
-      <img
-        className="w-full h-40 m-auto min-h-1/2 min-w-full"
-        src={parcel.image}
-        alt=""
-      />
+      <div className="h-40 overflow-hidden rounded-t-sm">
+        <img
+          className="mx-auto w-full -m-20"
+          src={parcel.image}
+          alt=""
+        />
+      </div>
       <div className="h-1/2 w-full px-4 py-4">
         <div className="w-full h-full flex flex-col">
           <div className="w-full flex flex-col">
