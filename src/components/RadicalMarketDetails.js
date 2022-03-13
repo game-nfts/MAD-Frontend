@@ -21,12 +21,6 @@ function RadicalMarketDetails(props) {
   const [layerName, handleLayerName] = useState('Decentraland');
   const [offers, handleOffers] = useState([]);
   const [id, handleId] = useState("");
-  /*{
-    from: "0xE124A27e",
-    bid: "0.1",
-    total: "1.0",
-    expiry: new Date(),
-  }*/
 
   useEffect(() => {
     let id = location.pathname.split('/').pop();
@@ -39,8 +33,6 @@ function RadicalMarketDetails(props) {
 
   const bid = async (pricePerDay, bidVal) => {
     if(bidVal > 0 && pricePerDay > 0 && id != "") {
-      console.log(ethers.utils.parseUnits(`${pricePerDay}`, 18).toString())
-      console.log(ethers.utils.parseUnits(`${bidVal}`, 18).toString())
       let tx = await radicalMarketInstance.bid(0, ethers.utils.parseUnits(`${pricePerDay}`, 18), {
         value: ethers.utils.parseUnits(`${bidVal}`, 18)
       });
@@ -51,8 +43,8 @@ function RadicalMarketDetails(props) {
     }
   }
 
-  const offersMap = offers.map((offer, idx) => (
-    <tr key={`offer-${offer.idx}`}>
+  const offersMap = offers.map((offer) => (
+    <tr key={`offer-${offer.timestamp}`}>
       <td className="px-6 py-4 whitespace-nowrap">
         <span className="inline-flex">
           {offer.from.substring(0, 6)}...{offer.from.substring(offer.from.length - 4)}
@@ -198,7 +190,7 @@ function RadicalMarketDetails(props) {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center font-commuter">
+              {/* <div className="flex items-center font-commuter">
                 <span className="uppercase lg:text-4xl text-12 leading-7 font-semibold mr-2">
                   Price History
                 </span>
@@ -207,7 +199,7 @@ function RadicalMarketDetails(props) {
                   className="lg:block hidden"
                   alt="price-tag"
                 />
-              </div>
+              </div> */}
 
               {/* This is for Chart implementation */}
               {/* <div className="flex justify-around flex-wrap w-full">

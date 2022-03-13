@@ -57,7 +57,7 @@ function RMPrice(props) {
           />
           <input
             className="lg:w-40 w-24 lg:h-16 h-8 bg-transparent border border-white border-opacity-30 rounded-md lg:text-2xl text-xl px-1 outline-none"
-            type="number"
+            type="numeric"
             onChange={(e) => updateDays(e)}
           />
           <span className="ml-2.5 lg:text-xl text-sm mt-auto">{days} Days</span>
