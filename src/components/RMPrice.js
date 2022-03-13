@@ -26,7 +26,7 @@ function RMPrice(props) {
       } else {
         let input = parseFloat(e.target.value);
         handleBid(input);
-        handleDays((input / 1e18 / madPrice).toFixed(2));
+        handleDays((input / madPrice).toFixed(2));
       }
     } catch(e) {
       console.log(e);
