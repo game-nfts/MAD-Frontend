@@ -7,26 +7,102 @@ import EthIcon from "../assets/eth_black.svg";
 import PriceTag from "../assets/price_tag.svg";
 import ArrowDownCircle from "../assets/arrow_down_circle.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getDecentralandParcelData } from "../helpers/graphql";
+import { getDecentralandParcelData, getOffers } from "../helpers/graphql";
+import { BigNumber, ethers } from "ethers";
+import { storeNotif } from "../helpers/notifications";
 
-function RadicalMarketDetails() {
+function RadicalMarketDetails(props) {
+  
+  const { radicalMarketContract, radicalMarketInstance } = props;
+
   const navigate = useNavigate();
   const location = useLocation();
   const [parcelData, handleParcelData] = useState(null);
   const [layerName, handleLayerName] = useState('Decentraland');
+  const [offers, handleOffers] = useState([]);
+  const [id, handleId] = useState("");
+  /*{
+    from: "0xE124A27e",
+    bid: "0.1",
+    total: "1.0",
+    expiry: new Date(),
+  }*/
 
   useEffect(() => {
     let id = location.pathname.split('/').pop();
+    handleId(id);
     (async () => {
       handleParcelData(await getDecentralandParcelData(id));
+      handleOffers(await getOffers(0));
     })();
   }, []);
 
-  const bid = (bidVal) => {
-    if(bidVal > 0) {
-      console.log('valid bid');
+  const bid = async (pricePerDay, bidVal) => {
+    if(bidVal > 0 && pricePerDay > 0 && id != "") {
+      // let mult = BigNumber.from(10).pow(18);
+      let pow = 18, pow2 = 18;
+      while(pricePerDay < 1) {
+        pricePerDay *= 10;
+        pow--;
+      }
+
+      while(bidVal < 1) {
+        bidVal *= 10;
+        pow2--;
+      }
+
+      console.log(BigNumber.from(10).pow(pow).mul(pricePerDay).toString())
+      console.log(BigNumber.from(10).pow(pow2).mul(bidVal).toString())
+      let tx = await radicalMarketInstance.bid(0, BigNumber.from(10).pow(pow).mul(pricePerDay), {
+        value: BigNumber.from(10).pow(pow2).mul(bidVal)
+      });
+      tx.wait(1).then(
+        // Store notif success
+        storeNotif("Bid Successful", "You are now the operator of this parcel.", "success")
+      );
     }
   }
+
+  const offersMap = offers.map((offer, idx) => (
+    <tr key={`offer-${offer.idx}`}>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <span className="inline-flex">
+          {offer.from.substring(0, 6)}...{offer.from.substring(offer.from.length - 4)}
+        </span>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="flex items-center">
+          <div className="flex-shrink-0 w-2.5">
+            <img
+              className="rounded-full"
+              src={EthIcon}
+              alt="eth-icon"
+            />
+          </div>
+          <div className="ml-2">
+            <span className="inline-flex">{offer.pricePerDay} ETH</span>
+          </div>
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <div className="flex items-center">
+          <div className="flex-shrink-0 w-2.5">
+            <img
+              className="rounded-full"
+              src={EthIcon}
+              alt="eth-icon"
+            />
+          </div>
+          <div className="ml-2">
+            <span className="inline-flex">{offer.total} ETH</span>
+          </div>
+        </div>
+      </td>
+      <td className="px-6 py-4 whitespace-nowrap">
+        <span className="inline-flex">{offer.timestamp}</span>
+      </td>
+    </tr>
+  ));
 
   return (
     <div className="w-full flex flex-col text-gray-95 font-commuter">
@@ -109,50 +185,24 @@ function RadicalMarketDetails() {
                                 scope="col"
                                 className="px-6 py-3 text-left uppercase tracking-wider"
                               >
-                                PRICE
+                                BID
                               </th>
                               <th
                                 scope="col"
                                 className="px-6 py-3 text-left uppercase tracking-wider"
                               >
-                                TOTAL VALUE
+                                TOTAL STAKED
                               </th>
                               <th
                                 scope="col"
                                 className="px-6 py-3 text-left uppercase tracking-wider"
                               >
-                                DATE
+                                EXPIRY
                               </th>
                             </tr>
                           </thead>
                           <tbody className="bg-transparent lg:text-lg text-12 font-normal">
-                            <tr>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex">
-                                  0xE124...A27E
-                                </span>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <div className="flex items-center">
-                                  <div className="flex-shrink-0 w-2.5">
-                                    <img
-                                      className="rounded-full"
-                                      src={EthIcon}
-                                      alt="eth-icon"
-                                    />
-                                  </div>
-                                  <div className="ml-2">
-                                    <span className="inline-flex">10 ETH</span>
-                                  </div>
-                                </div>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex">$ 4,712.45</span>
-                              </td>
-                              <td className="px-6 py-4 whitespace-nowrap">
-                                <span className="inline-flex">35 min ago</span>
-                              </td>
-                            </tr>
+                            {offersMap}
                           </tbody>
                         </table>
                       </div>

@@ -1,4 +1,5 @@
 const endpoint = 'https://api.thegraph.com/subgraphs/name/decentraland/marketplace';
+const radicalmarketendpoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/radical-market';
 const liteendoint = 'https://api.thegraph.com/subgraphs/name/boyuanx/decentraland-lite';
 export const MAD_ADDRESS = '0x9D4DdDbe95192Ad8bE81ee88E021c9Eaf575BAf8';
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
@@ -12,6 +13,18 @@ function generateParcelUpdateOperatorIsMADQuery() {
           }
     }`;
   return parcelQuery;
+}
+
+function generateParcelOffersQuery(tokenId) {
+  const offerQuery = `{
+      bidEvents(where: {tokenId: "${tokenId}"}) {
+        timestamp
+        from
+        pricePerDay
+        total
+      }
+    }`;
+  return offerQuery;
 }
 
 // Estate is a collection of parcels
@@ -319,6 +332,25 @@ export const getDecentralandEstateUpdateOperator = async (estateContract, estate
       ret = false;
     } else {
       ret = res === MAD_ADDRESS;
+    }
+  });
+
+  return ret;
+}
+
+export const getOffers = async (tokenId) => {
+  let ret = [];
+  await fetch(radicalmarketendpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: generateParcelOffersQuery(tokenId),
+    }),
+  }).then((res) => res.json()).then(async (result) => {
+    if(result?.data?.bidEvents) {
+      ret = result.data.bidEvents;
     }
   });
 

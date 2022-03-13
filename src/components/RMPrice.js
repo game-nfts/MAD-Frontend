@@ -26,7 +26,7 @@ function RMPrice(props) {
       } else {
         let input = parseFloat(e.target.value);
         handleBid(input);
-        handleDays((input / madPrice).toFixed(2));
+        handleDays((input / 1e18 / madPrice).toFixed(2));
       }
     } catch(e) {
       console.log(e);
@@ -64,7 +64,7 @@ function RMPrice(props) {
         </div>
         <Button
           text="Stake and Bid"
-          onClick={() => stakeAndBid(bid)}
+          onClick={() => stakeAndBid(madPrice, bid)}
           className="text-center text-gray-490 bg-green-60 hover:bg-pink-10 font-nexa font-bold lg:text-xl text-12 hover:text-gray-500 w-auto ml-auto lg:px-5 px-3 lg:py-2.5 py-1.5  lg:mt-0 mt-4"
         />
       </div>
