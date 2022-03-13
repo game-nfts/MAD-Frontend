@@ -62,7 +62,7 @@ function App() {
         handleCvContract(cvc);
 
         // RadicalMarket contract
-        const rmc = new ethers.Contract('0x10b067bedB8F4739E5c20891e1A5E619B2D2DCCe', radicalmarket_abi.abi, library);
+        const rmc = new ethers.Contract('0x2aA3c96D507D5dDeF3CDE699fE8a7752AFFD1935', radicalmarket_abi.abi, library);
         const rmi = rmc.connect(library.getSigner());
         handleRadicalMarketContract(rmc);
         handleRadicalMarketInstance(rmi);

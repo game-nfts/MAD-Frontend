@@ -142,7 +142,7 @@ function RadicalMarketDetails(props) {
                       className="md:block hidden"
                     />
                   </div>
-                  <RMPrice marketValue={1.39} madPrice={0.1} stakeAndBid={bid}/>
+                  <RMPrice marketValue={1.39} madPrice={0.01} stakeAndBid={bid}/>
                 </div>
               </div>
               <div className="lg:mt-28 mt-8">
