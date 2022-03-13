@@ -68,7 +68,7 @@ function RadicalMarketDetails(props) {
             />
           </div>
           <div className="ml-2">
-            <span className="inline-flex">{offer.pricePerDay} ETH</span>
+            <span className="inline-flex">{offer.pricePerDay / 1e18} ETH</span>
           </div>
         </div>
       </td>
@@ -82,12 +82,12 @@ function RadicalMarketDetails(props) {
             />
           </div>
           <div className="ml-2">
-            <span className="inline-flex">{offer.total} ETH</span>
+            <span className="inline-flex">{offer.total / 1e18} ETH</span>
           </div>
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
-        <span className="inline-flex">{offer.timestamp}</span>
+        <span className="inline-flex">{(new Date(offer.timestamp * 1000)).toISOString()}</span>
       </td>
     </tr>
   ));
