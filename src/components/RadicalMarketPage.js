@@ -15,32 +15,32 @@ import {
 
 const NavData = [
   {
-    name: "Cryptovoxels",
-    current: false,
-    children: [],
-    value: 10,
-    disabled: false,
-  },
-  {
-    name: "Island",
-    current: false,
-    children: [
-      { name: "Origin City", href: "#", current: false },
-      { name: "Satoshi", href: "#", current: false },
-      { name: "Angomeda", href: "#", current: false },
-      { name: "Scarcity", href: "#", current: false },
-    ],
-    icon: Menu,
-    value: 8,
-    disabled: false,
-  },
-  {
     name: "Decentraland",
     current: false,
     children: [],
     value: 3,
+    disabled: false,
+  },
+  {
+    name: "Cryptovoxels",
+    current: false,
+    children: [],
+    value: 10,
     disabled: true,
   },
+  // {
+  //   name: "Island",
+  //   current: false,
+  //   children: [
+  //     { name: "Origin City", href: "#", current: false },
+  //     { name: "Satoshi", href: "#", current: false },
+  //     { name: "Angomeda", href: "#", current: false },
+  //     { name: "Scarcity", href: "#", current: false },
+  //   ],
+  //   icon: Menu,
+  //   value: 8,
+  //   disabled: false,
+  // },
   {
     name: "The Sandbox",
     current: false,

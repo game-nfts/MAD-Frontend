@@ -28,7 +28,7 @@ function Sidebar({ data, setData }) {
                 <a
                   className={`font-normal text-xl ${
                     item.disabled
-                      ? "text-gray-60 cursor-default"
+                      ? "text-gray-60 cursor-not-allowed"
                       : "cursor-pointer "
                   }`}
                 >

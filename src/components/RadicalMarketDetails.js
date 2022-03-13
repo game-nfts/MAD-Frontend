@@ -10,6 +10,13 @@ import { useNavigate } from "react-router-dom";
 
 function RadicalMarketDetails() {
   const navigate = useNavigate();
+
+  const bid = (bidVal) => {
+    if(bidVal > 0) {
+      console.log('valid bid');
+    }
+  }
+
   return (
     <div className="w-full flex flex-col text-gray-95 font-commuter">
       <div className="w-full flex flex-col pt-20 px-10 bg-gray-490">
@@ -60,7 +67,7 @@ function RadicalMarketDetails() {
                       className="md:block hidden"
                     />
                   </div>
-                  <RMPrice />
+                  <RMPrice marketValue={1.39} madPrice={0.1} stakeAndBid={bid}/>
                 </div>
               </div>
               <div className="lg:mt-28 mt-8">

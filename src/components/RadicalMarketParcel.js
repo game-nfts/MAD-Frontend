@@ -51,8 +51,9 @@ const RadicalMarketParcel = (props) => {
                   replace: true,
                 });
               }}
-              className="mt-4 bg-gray-525 hover:bg-black text-white w-max ml-auto hover:bg-black"
+              className="mt-4 bg-gray-525 text-white w-max ml-auto hover:bg-white hover:text-gray-500"
               text="Bid Now"
+              borderColor={"white"}
             />
           </div>
         </div>
