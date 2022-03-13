@@ -39,22 +39,10 @@ function RadicalMarketDetails(props) {
 
   const bid = async (pricePerDay, bidVal) => {
     if(bidVal > 0 && pricePerDay > 0 && id != "") {
-      // let mult = BigNumber.from(10).pow(18);
-      let pow = 18, pow2 = 18;
-      while(pricePerDay < 1) {
-        pricePerDay *= 10;
-        pow--;
-      }
-
-      while(bidVal < 1) {
-        bidVal *= 10;
-        pow2--;
-      }
-
-      console.log(BigNumber.from(10).pow(pow).mul(pricePerDay).toString())
-      console.log(BigNumber.from(10).pow(pow2).mul(bidVal).toString())
-      let tx = await radicalMarketInstance.bid(0, BigNumber.from(10).pow(pow).mul(pricePerDay), {
-        value: BigNumber.from(10).pow(pow2).mul(bidVal)
+      console.log(ethers.utils.parseUnits(`${pricePerDay}`, 18).toString())
+      console.log(ethers.utils.parseUnits(`${bidVal}`, 18).toString())
+      let tx = await radicalMarketInstance.bid(0, ethers.utils.parseUnits(`${pricePerDay}`, 18), {
+        value: ethers.utils.parseUnits(`${bidVal}`, 18)
       });
       tx.wait(1).then(
         // Store notif success
