@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ArrowLeft from "../assets/arrow_left.svg";
 import RMLocation from "./RMLocation";
 import RMPrice from "./RMPrice";
@@ -6,10 +6,21 @@ import GavelExpand from "../assets/gavel_expand.svg";
 import EthIcon from "../assets/eth_black.svg";
 import PriceTag from "../assets/price_tag.svg";
 import ArrowDownCircle from "../assets/arrow_down_circle.svg";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getDecentralandParcelData } from "../helpers/graphql";
 
 function RadicalMarketDetails() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [parcelData, handleParcelData] = useState(null);
+  const [layerName, handleLayerName] = useState('Decentraland');
+
+  useEffect(() => {
+    let id = location.pathname.split('/').pop();
+    (async () => {
+      handleParcelData(await getDecentralandParcelData(id));
+    })();
+  }, []);
 
   const bid = (bidVal) => {
     if(bidVal > 0) {
@@ -39,11 +50,11 @@ function RadicalMarketDetails() {
               <div className="mt-9 block md:flex md:space-x-12">
                 <div className="w-full md:w-1/2">
                   <p className="text-green-30 lg:text-2xl text-base mb-1 text-left md:hidden block">
-                    Cryptovoxels
+                    {layerName}
                   </p>
                   <div className="flex md:mb-0 mb-4 md:block ">
                     <p className="text-white lg:text-4xl text-2xl mr-3 md:hidden block">
-                      312 Neutron Tower
+                      {parcelData?.name}
                     </p>
                     <img
                       src={ArrowDownCircle}
@@ -51,15 +62,15 @@ function RadicalMarketDetails() {
                       className="md:hidden block"
                     />
                   </div>
-                  <RMLocation />
+                  <RMLocation parcel={parcelData} />
                 </div>
                 <div className="w-full md:w-1/2">
                   <p className="text-green-30 lg:text-2xl text-base lg:mb-7 mb-1 text-left md:block hidden">
-                    Cryptovoxels
+                    {layerName}
                   </p>
                   <div className="flex lg:mb-14 mb-4">
                     <p className="text-white lg:text-4xl text-2xl mr-3 md:block hidden">
-                      312 Neutron Tower
+                      {parcelData ? parcelData.name ? parcelData.name : `Parcel #${parcelData.tokenId.substring(0, 12)}` : 'Loading...'}
                     </p>
                     <img
                       src={ArrowDownCircle}

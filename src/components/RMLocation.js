@@ -2,11 +2,14 @@ import React from "react";
 import Card from "../assets/card.png";
 import Property from "../assets/property.svg";
 
-function RMLocation() {
+function RMLocation(props) {
+
+  const { parcel } = props;
+
   return (
     <div className="w-full bg-black-20 rounded-2xl font-commuter border border-gray-35">
-      <div className="xs:px-9 px-0">
-        <img src={Card} alt="parcel" className="mx-auto w-full" />
+      <div className="h-64 overflow-hidden rounded-t-2xl">
+        <img src={parcel.image ? parcel.image : Card} alt="parcel" className="mx-auto w-full -m-32" />
       </div>
       <div className="flex items-center xs:justify-start justify-center h-14 xs:px-9 px-0 flex-wrap bg-gray-25">
         <img src={Property} alt="property" className=" mr-3" />

@@ -41,7 +41,7 @@ const RadicalMarketParcel = (props) => {
               </div>
               <div className="ml-auto text-right">
                 <p className="text-8 text-gray-105 font-normal">Current Bid:</p>
-                <p className="text-green-30 text-15 font-bold">0.08eth</p>
+                <p className="text-green-30 text-15 font-bold">0.01eth</p>
                 <p className="text-green-30 text-12 font-bold">per Day</p>
               </div>
             </div>
