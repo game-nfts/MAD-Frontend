@@ -5,7 +5,8 @@ import Sidebar from "./Sidebar";
 import Search from "./Search";
 import Dropdown from "./Dropdown";
 import { ReactComponent as ArrowDownIcon } from "../assets/arrow_down.svg";
-import Menu from "../assets/menu.svg";
+import ParcelIcon from "../assets/parcel.svg";
+import EstateIcon from "../assets/estate.svg";
 import ParcelGroup from "./ParcelGroup";
 import { useWeb3React } from "@web3-react/core";
 import {
@@ -17,35 +18,43 @@ const NavData = [
   {
     name: "Decentraland",
     current: false,
-    children: [],
-    value: 3,
+    children: [
+      { name: "Origin City", href: "#", current: false },
+      { name: "Satoshi", href: "#", current: false },
+      { name: "Angomeda", href: "#", current: false },
+      { name: "Scarcity", href: "#", current: false },
+    ],
+    value: 0,
     disabled: false,
+  },
+  {
+    name: "Parcel",
+    current: false,
+    children: [],
+    icon: ParcelIcon,
+    value: 1,
+    disabled: false,
+  },
+  {
+    name: "Estate",
+    current: false,
+    children: [],
+    icon: EstateIcon,
+    value: 2,
+    disabled: true,
   },
   {
     name: "Cryptovoxels",
     current: false,
-    children: [],
-    value: 10,
+    children: [""],
+    value: 3,
     disabled: true,
   },
-  // {
-  //   name: "Island",
-  //   current: false,
-  //   children: [
-  //     { name: "Origin City", href: "#", current: false },
-  //     { name: "Satoshi", href: "#", current: false },
-  //     { name: "Angomeda", href: "#", current: false },
-  //     { name: "Scarcity", href: "#", current: false },
-  //   ],
-  //   icon: Menu,
-  //   value: 8,
-  //   disabled: false,
-  // },
   {
     name: "The Sandbox",
     current: false,
-    children: [],
-    value: 20,
+    children: [""],
+    value: 4,
     disabled: true,
   },
 ];

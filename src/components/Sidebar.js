@@ -10,9 +10,11 @@ function Sidebar({ data, setData }) {
     setData([...data]);
   };
 
-  const onHandleSidebar = (parent_index) => {
-    showList[parent_index] = !showList[parent_index];
-    setShowList([...showList]);
+  const onHandleSidebar = (parent_index, disabled) => {
+    if (!disabled) {
+      showList[parent_index] = !showList[parent_index];
+      setShowList([...showList]);
+    }
   };
 
   return (
@@ -23,8 +25,17 @@ function Sidebar({ data, setData }) {
 
           {data.map((item, item_idx) =>
             !item.children.length ? (
-              <div key={item.name}>
-                {item.icon && <img src={item.icon} alt={item.name} />}
+              <div
+                key={item.name}
+                className={`${
+                  item.icon
+                    ? "inline-grid w-full items-center grid-cols-icon-tab"
+                    : "flex"
+                }`}
+              >
+                {item.icon && (
+                  <img src={item.icon} alt={item.name} className="min-w" />
+                )}
                 <a
                   className={`font-normal text-xl ${
                     item.disabled
@@ -40,10 +51,14 @@ function Sidebar({ data, setData }) {
                 {
                   <>
                     <button
-                      className={`flex min-w-full items-center font-normal text-xl mb-6 ${
-                        item.disabled ? "text-gray-60 cursor-default" : ""
+                      className={`flex min-w-full items-center font-normal text-xl ${
+                        showList[item_idx] ? "mb-6" : ""
+                      } ${
+                        item.disabled
+                          ? "text-gray-60 cursor-not-allowed"
+                          : "cursor-pointer"
                       }`}
-                      onClick={() => onHandleSidebar(item_idx)}
+                      onClick={() => onHandleSidebar(item_idx, item.disabled)}
                     >
                       {item.icon && (
                         <img
@@ -57,6 +72,7 @@ function Sidebar({ data, setData }) {
                         className={`transform duration-100 ml-auto ${
                           showList[item_idx] ? "rotate-90" : "rotate-0"
                         }`}
+                        fill={`${item.disabled ? "#4F4F4F" : "white"}`}
                       />
                     </button>
                     {showList[item_idx] && (

@@ -96,6 +96,7 @@ module.exports = {
       },
       gridTemplateColumns: {
         modal: "repeat(auto-fit, minmax(320px, 1fr))",
+        "icon-tab": "26px auto",
         "modal-mobile": "1fr",
       },
       width: {
