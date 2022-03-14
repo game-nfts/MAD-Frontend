@@ -13,6 +13,7 @@ import {
   getDecentralandParcelsWithMADAsUpdateOperator,
   MAD_ADDRESS,
 } from "../helpers/graphql";
+import LoginGif from "../assets/login.svg"; // should be replaced with gif file
 
 const NavData = [
   {
@@ -247,17 +248,31 @@ function RadicalMarketPage(props) {
             </div>
           </div>
 
-          {/* <-- need to be done after query data --> */}
-          <div className="mt-7">
-            <ParcelGroup
-              parcels={activeParcels}
-              layerName={getLayerName(0)}
-              leaseCallback={lease}
-              cancelCallback={cancelLease}
-              claimProfitCallback={claimProfit}
-              radicalMarket
-            />
-          </div>
+          {active ? (
+            <div className="mt-7">
+              <ParcelGroup
+                parcels={activeParcels}
+                layerName={getLayerName(0)}
+                leaseCallback={lease}
+                cancelCallback={cancelLease}
+                claimProfitCallback={claimProfit}
+                radicalMarket
+              />
+            </div>
+          ) : (
+            <div className="w-full h-full flex items-center justify-center">
+              <div>
+                <img
+                  src={LoginGif}
+                  alt="Login"
+                  className="w-44 h-auto mx-auto my-auto mb-10"
+                />
+                <p className="font-commuter text-xl font-normal text-gray-55">
+                  Please log in to see all parcels available.
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

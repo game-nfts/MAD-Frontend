@@ -15,16 +15,9 @@ const RadicalMarketParcel = (props) => {
   const navigate = useNavigate();
 
   return (
-    <div
-      key={`op-${i}`}
-      className="font-commuter w-72 mx-6 bg-gray-bg rounded-sm flex flex-col mt-10 shadow-xl"
-    >
+    <>
       <div className="h-40 overflow-hidden rounded-t-sm">
-        <img
-          className="mx-auto w-full -m-20"
-          src={parcel.image}
-          alt=""
-        />
+        <img className="mx-auto w-full -m-20" src={parcel.image} alt="" />
       </div>
       <div className="h-1/2 w-full px-4 py-4">
         <div className="w-full h-full flex flex-col">
@@ -60,7 +53,7 @@ const RadicalMarketParcel = (props) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

@@ -13,23 +13,33 @@ const ParcelGroup = (props) => {
 
   const itemCards = parcels.map((item, i) =>
     radicalMarket ? (
-      <RadicalMarketParcel
-        parcel={item}
-        i={i}
-        layerName={layerName}
-        leaseCallback={leaseCallback}
-        cancelCallback={cancelCallback}
-        claimProfitCallback={claimProfitCallback}
-      />
+      <div
+        key={`radical-op-${i}`}
+        className="font-commuter w-72 mx-6 bg-gray-bg rounded-sm flex flex-col mt-10 shadow-xl"
+      >
+        <RadicalMarketParcel
+          parcel={item}
+          i={i}
+          layerName={layerName}
+          leaseCallback={leaseCallback}
+          cancelCallback={cancelCallback}
+          claimProfitCallback={claimProfitCallback}
+        />
+      </div>
     ) : (
-      <Parcel
-        parcel={item}
-        i={i}
-        layerName={layerName}
-        leaseCallback={leaseCallback}
-        cancelCallback={cancelCallback}
-        claimProfitCallback={claimProfitCallback}
-      />
+      <div
+        key={`op-${i}`}
+        className="h-100 w-64 mx-6 bg-gray-bg rounded-sm flex flex-col mt-10 shadow-xl"
+      >
+        <Parcel
+          parcel={item}
+          i={i}
+          layerName={layerName}
+          leaseCallback={leaseCallback}
+          cancelCallback={cancelCallback}
+          claimProfitCallback={claimProfitCallback}
+        />
+      </div>
     )
   );
 
